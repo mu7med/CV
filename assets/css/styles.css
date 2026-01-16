@@ -320,8 +320,8 @@ a:focus {
 }
 
 section {
-  //padding: 60px 0;
-  //padding-bottom: 30px;
+  /* padding: 60px 0; */
+  /* padding-bottom: 30px; */
 }
 
 /**
@@ -983,7 +983,8 @@ h6 {
 }
 
 .dark-vertion.black-bg {
-  background-color: #100e17;
+  background: url('../../images/bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .dark-vertion .section-loader {
