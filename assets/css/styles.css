@@ -1623,6 +1623,12 @@ body {
 .mh-skills .work-responsibility li {
   font-size: 15px;
   list-style: none;
+  font-weight: 400;
+}
+
+.mh-skills .work-responsibility li strong {
+  font-weight: 900;
+  color: #fff;
 }
 
 .mh-skills .work-responsibility li .fa {
