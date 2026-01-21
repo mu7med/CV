@@ -320,8 +320,8 @@ a:focus {
 }
 
 section {
-  //padding: 60px 0;
-  //padding-bottom: 30px;
+  /* padding: 60px 0; */
+  /* padding-bottom: 30px; */
 }
 
 /**
@@ -983,7 +983,8 @@ h6 {
 }
 
 .dark-vertion.black-bg {
-  background-color: #100e17;
+  background: url('../../images/bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .dark-vertion .section-loader {
@@ -1567,6 +1568,7 @@ body {
 
 .mh-about .mh-about-inner p {
   margin-bottom: 30px;
+  font-size: 15px;
 }
 
 .mh-about .mh-about-inner .btn {
@@ -1618,6 +1620,21 @@ body {
   margin-bottom: 60px;
 }
 
+.mh-skills .work-responsibility li {
+  font-size: 15px;
+  list-style: none;
+  font-weight: 400;
+}
+
+.mh-skills .work-responsibility li strong {
+  font-weight: 900;
+  color: #fff;
+}
+
+.mh-skills .work-responsibility li .fa {
+  display: none;
+}
+
 .mh-professional-skills {
   padding-left: 20%;
 }
@@ -1637,6 +1654,8 @@ body {
   width: 48%;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 15px;
+  list-style: none;
 }
 
 .mh-progress {
@@ -1894,6 +1913,7 @@ body {
   display: inline-block;
   margin: 0 10px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .portfolio-nav ul li:hover {
@@ -2308,6 +2328,7 @@ body {
   padding: 30px;
   text-align: center;
   margin-bottom: 30px;
+  font-size: 15px;
 }
 
 .mh-footer-address .mh-address-footer-item h4 {

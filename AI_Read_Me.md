@@ -111,7 +111,3 @@ This section implements a **Master-Detail Pattern** instead of a static list.
 1. **Global Styles:** Edit `assets/css/styles.css`.
 2. **Theme Color:** Search for `#ffc107` or `rgba(255, 193, 7, ...)` references or update `assets/css/colors/yellow.css` if strictly using the switcher dynamics (though inline styles currently use hardcoded yellow).
 
-## 7. Known Customizations (From recent edits)
-- **Address:** Hardcoded to "Qurtubah, Riyadh, KSA" in Home and Footer.
-- **Glass Effects:** Manually added CSS rules for `.mh-address-footer-item` and `.hero-img .img-border` at the end of `styles.css`.
-- **Experience Preview:** Custom container styles added to `styles.css` (around line 2800+).
