@@ -764,8 +764,9 @@ h6 {
   font-weight: bold;
 }
 
-.white-vertion.black-bg {
-  background-color: #fff;
+.white-vertion {
+  background: url('../../images/w-bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .white-vertion .section-loader {
@@ -4164,4 +4165,28 @@ BLOG Pagination
   50% {
     transform: translateY(-15px) rotateX(2deg);
   }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+  color: #ffc107;
+}
+
+.white-vertion .theme-toggle-btn {
+  color: #000;
+}
+
+.white-vertion .theme-toggle-btn:hover {
+  color: #ffc107;
 }
