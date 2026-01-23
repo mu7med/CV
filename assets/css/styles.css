@@ -1691,7 +1691,7 @@ body {
 }
 
 .mh-progress path:nth-child(1) {
-  stroke: rgba(0, 0, 0, 0.7);
+  stroke: #EEEEEE;
 }
 
 .mh-progress path:nth-child(2) {
@@ -3782,10 +3782,10 @@ BLOG Pagination
 
 /* PREVIEW CONTAINER (The Detail View) */
 .experience-preview-container {
-  background: rgba(16, 14, 23, 0.95);
+  background: rgba(16, 14, 23, 0.5);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 193, 7, 0.3);
+  border: 1px solid rgba(255, 193, 7, 0.4);
   border-radius: 15px;
   padding: 30px;
   margin: 20px auto;
@@ -4197,10 +4197,10 @@ BLOG Pagination
 
 /* Experience Cards - Light Mode - 3D Glassmorphism */
 .white-vertion .experience-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   /* Subtle blue-grey glass shadow */
   transform-style: preserve-3d;
@@ -4241,10 +4241,10 @@ BLOG Pagination
 
 /* Preview Container - Light Mode - 3D Glassmorphism */
 .white-vertion .experience-preview-container {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: #333;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   /* Softer shadow */
@@ -4265,7 +4265,7 @@ BLOG Pagination
 /* Preview Body - Light Mode */
 .white-vertion #preview-focus {
   background: rgba(0, 0, 0, 0.04);
-  color: #444;
+  color: #000 !important;
   border-left-color: #00B9FF;
   /* Keep accent */
 }
@@ -4516,4 +4516,12 @@ BLOG Pagination
 .white-vertion .mh-home .mh-header-info .social-icon li .fa:hover {
   background-color: #000;
   color: #00B9FF;
+}
+
+/* MAIN MENU / HEADER - Light Mode */
+.white-vertion .mh-header {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
