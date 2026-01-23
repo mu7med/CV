@@ -4190,3 +4190,97 @@ BLOG Pagination
 .white-vertion .theme-toggle-btn:hover {
   color: #ffc107;
 }
+
+/* ==============================================
+   Light Mode Overrides (Experience Section)
+============================================== */
+
+/* Experience Cards - Light Mode - 3D Glassmorphism */
+.white-vertion .experience-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  /* Subtle blue-grey glass shadow */
+  transform-style: preserve-3d;
+}
+
+.white-vertion .experience-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%) !important;
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(255, 193, 7, 0.6);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 193, 7, 0.1),
+    inset 0 0 0 1px rgba(255, 193, 7, 0.3);
+  /* Inner glow */
+}
+
+/* Glare Effect for Light Mode (inherits geometry, just needs subtle opacity adjust) */
+.white-vertion .experience-card::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.white-vertion .experience-card.active {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 100%) !important;
+  border: 1px solid #ffc107;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+}
+
+.white-vertion .experience-card h7 {
+  color: #333;
+  /* Dark text for role/company */
+  font-weight: 600;
+}
+
+.white-vertion .experience-card .mh-eduyear {
+  color: #666;
+  /* Darker grey for year */
+}
+
+/* Preview Container - Light Mode - 3D Glassmorphism */
+.white-vertion .experience-preview-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #333;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  /* Softer shadow */
+}
+
+.white-vertion .preview-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.white-vertion .preview-header h7 {
+  color: #555;
+}
+
+.white-vertion .preview-header .mh-eduyear {
+  color: #777;
+}
+
+/* Preview Body - Light Mode */
+.white-vertion #preview-focus {
+  background: rgba(0, 0, 0, 0.04);
+  color: #444;
+  border-left-color: #ffc107;
+  /* Keep accent */
+}
+
+.white-vertion .preview-body h5 {
+  color: #333;
+}
+
+.white-vertion .preview-body ul li {
+  color: #444;
+}
+
+.white-vertion .preview-body .tech-badge {
+  background: rgba(255, 193, 7, 0.1);
+  color: #d39e00;
+  /* Darker yellow for contrast on white */
+  border: 1px solid rgba(255, 193, 7, 0.4);
+}
