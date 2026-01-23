@@ -4459,6 +4459,11 @@ BLOG Pagination
   color: #00B9FF;
 }
 
+/* Address hover color (matches email/phone link hover behavior) */
+.white-vertion .mh-home .mh-header-info ul li:hover address {
+  color: #00B9FF;
+}
+
 .white-vertion .mh-home .mh-header-info .social-icon li .fa:hover {
   background-color: #00B9FF;
 }
