@@ -864,7 +864,7 @@ h6 {
 .white-vertion .page-item.active .page-link {
   background-color: #fff;
   border-color: #fff;
-  color: #ffc107;
+  color: #00B9FF;
 }
 
 .white-vertion .navbar-toggler .icon,
@@ -4188,7 +4188,7 @@ BLOG Pagination
 }
 
 .white-vertion .theme-toggle-btn:hover {
-  color: #ffc107;
+  color: #00B9FF;
 }
 
 /* ==============================================
@@ -4209,11 +4209,11 @@ BLOG Pagination
 .white-vertion .experience-card:hover {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%) !important;
   transform: translateY(-5px) scale(1.02);
-  border-color: rgba(255, 193, 7, 0.6);
+  border-color: rgba(0, 185, 255, 0.6);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 20px rgba(255, 193, 7, 0.1),
-    inset 0 0 0 1px rgba(255, 193, 7, 0.3);
+    0 0 20px rgba(0, 185, 255, 0.1),
+    inset 0 0 0 1px rgba(0, 185, 255, 0.3);
   /* Inner glow */
 }
 
@@ -4223,9 +4223,9 @@ BLOG Pagination
 }
 
 .white-vertion .experience-card.active {
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 100%) !important;
-  border: 1px solid #ffc107;
-  box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+  background: linear-gradient(135deg, rgba(0, 185, 255, 0.15) 0%, rgba(0, 185, 255, 0.05) 100%) !important;
+  border: 1px solid #00B9FF;
+  box-shadow: 0 0 20px rgba(0, 185, 255, 0.2);
 }
 
 .white-vertion .experience-card h7 {
@@ -4266,7 +4266,7 @@ BLOG Pagination
 .white-vertion #preview-focus {
   background: rgba(0, 0, 0, 0.04);
   color: #444;
-  border-left-color: #ffc107;
+  border-left-color: #00B9FF;
   /* Keep accent */
 }
 
@@ -4279,8 +4279,241 @@ BLOG Pagination
 }
 
 .white-vertion .preview-body .tech-badge {
-  background: rgba(255, 193, 7, 0.1);
-  color: #d39e00;
-  /* Darker yellow for contrast on white */
-  border: 1px solid rgba(255, 193, 7, 0.4);
+  background: rgba(0, 185, 255, 0.1);
+  color: #007bb5;
+  /* Darker blue for text */
+  border: 1px solid rgba(0, 185, 255, 0.4);
+}
+
+/* ==============================================
+   EXTENDED LIGHT MODE OVERRIDES (MALIBU BLUE)
+   Covers Home, Skills, Testimonials, Contact, etc.
+============================================== */
+
+/* About & Skills */
+.white-vertion .mh-about-tag ul li span {
+  border-color: #00B9FF;
+}
+
+.white-vertion .mh-progress path:nth-child(2) {
+  stroke: #00B9FF;
+}
+
+/* Testimonials & Projects */
+.white-vertion .mh-testimonial .mh-client-item img {
+  border-color: #00B9FF;
+}
+
+.white-vertion .mh-testimonial .owl-controls .owl-dots .owl-dot,
+.white-vertion .mh-single-project-slide .owl-controls .owl-dots .owl-dot {
+  border: 1px solid #00B9FF;
+}
+
+.white-vertion .mh-testimonial .owl-controls .owl-dots .owl-dot.active,
+.white-vertion .mh-single-project-slide .owl-controls .owl-dots .owl-dot.active {
+  background-color: #00B9FF;
+}
+
+.white-vertion .mh-featured-project .mh-featured-item .mh-featured-project-content .project-category {
+  color: #00B9FF;
+}
+
+/* Experience Preview Details (Deep Overrides) */
+.white-vertion .preview-header h3 {
+  color: #00B9FF;
+}
+
+.white-vertion .preview-body h5 {
+  color: #00B9FF;
+}
+
+.white-vertion .preview-body h5::before {
+  background: #00B9FF;
+}
+
+.white-vertion .preview-body ul li::before {
+  color: #00B9FF;
+}
+
+.white-vertion #preview-focus::before {
+  color: #00B9FF;
+}
+
+/* Contact & Blog & Social */
+.white-vertion .mh-author-info .social-icon li a:hover,
+.white-vertion .mh-blog-category ul li a:hover,
+.white-vertion .mh-blog-next-prev-post a,
+.white-vertion .comment-deatils span {
+  color: #00B9FF;
+}
+
+/* Disclaimer: Ensure all dynamic elements respect these overrides */
+
+/* ==============================================
+   Light Mode Color Theme (Malibu Blue #00B9FF)
+============================================== */
+
+/* GLOBAL ACCENTS */
+.white-vertion a:hover,
+.white-vertion .mh-home-nav .navbar-nav .nav-link:hover,
+.white-vertion .mh-home-nav .navbar-nav .nav-link.active {
+  color: #00B9FF !important;
+}
+
+.white-vertion .btn-fill {
+  background-color: #00B9FF;
+  border: 1px solid #00B9FF;
+}
+
+.white-vertion .btn-fill:hover {
+  background-color: #fff;
+  color: #00B9FF;
+  border: 1px solid #00B9FF;
+}
+
+/* SKILLS SECTION */
+.white-vertion .candidatos .parcial .percentagem {
+  background: #00B9FF;
+}
+
+.white-vertion .mh-skills .work-responsibility li strong {
+  color: #00B9FF;
+}
+
+.white-vertion .mh-professional-skill .each-skills .candidatos .parcial .percentagem {
+  background: #00B9FF;
+}
+
+/* EXPERIENCE & EDUCATION TEXT */
+.white-vertion .mh-experince .mh-education-deatils .mh-education-item h4 a,
+.white-vertion .mh-work .mh-experience-deatils .mh-work-item h4 a {
+  color: #00B9FF;
+}
+
+.white-vertion .mh-experince .mh-education-deatils .mh-education-item .mh-eduyear,
+.white-vertion .mh-work .mh-experience-deatils .mh-work-item .mh-eduyear {
+  color: #00B9FF;
+}
+
+/* SERVICE / ICONS */
+.white-vertion .mh-service-item .fa {
+  color: #00B9FF;
+}
+
+.white-vertion .mh-service-item:hover .fa {
+  background-color: #00B9FF;
+  border-color: #00B9FF;
+}
+
+/* PORTFOLIO */
+.white-vertion .portfolio-nav ul li:hover,
+.white-vertion .portfolio-nav ul li.active {
+  color: #00B9FF;
+}
+
+.white-vertion .mh-portfolio .grid-item figure figcaption {
+  background: transparent;
+}
+
+.white-vertion .mh-portfolio .grid-item figure:hover figcaption,
+.white-vertion .mh-project-gallery .grid-item figure:hover figcaption {
+  background: rgba(0, 185, 255, 0.9);
+}
+
+/* PRICING */
+.white-vertion .mh-pricing .mh-pricing:hover .btn {
+  background-color: #00B9FF;
+}
+
+.white-vertion .mh-pricing .mh-pricing .fa {
+  color: #00B9FF;
+  border: 1px solid #00B9FF;
+}
+
+.white-vertion .mh-pricing .mh-pricing:hover .fa {
+  background-color: #00B9FF;
+}
+
+/* FOOTER & CONTACT */
+.white-vertion .mh-map-icon:hover {
+  background-color: #00B9FF;
+  border: 1px solid #00B9FF;
+}
+
+.white-vertion .contact-info span a:hover {
+  color: #00B9FF;
+}
+
+/* TOGGLE BUTTON */
+.white-vertion .theme-toggle-btn:hover {
+  color: #00B9FF;
+}
+
+/* ==============================================
+   FINAL LIGHT MODE OVERRIDES (MALIBU BLUE)
+   Home, Experience Cards, Certificates, Contact
+============================================== */
+
+/* HOME SECTION - Social Icons & Contact Info */
+.white-vertion .mh-home .mh-header-info ul li:hover .fa {
+  color: #00B9FF;
+}
+
+.white-vertion .mh-home .mh-header-info .social-icon li .fa:hover {
+  background-color: #00B9FF;
+}
+
+/* HOME SECTION - Profile Image Border (3D Orb) */
+.white-vertion .hero-img .img-border {
+  border: 2px solid rgba(0, 185, 255, 0.3);
+  box-shadow:
+    0 0 30px rgba(0, 185, 255, 0.15),
+    inset 0 0 20px rgba(0, 185, 255, 0.1);
+}
+
+.white-vertion .hero-img .img-border:hover {
+  box-shadow:
+    0 0 50px rgba(0, 185, 255, 0.3),
+    inset 0 0 30px rgba(0, 185, 255, 0.2);
+  border-color: #00B9FF;
+}
+
+/* EXPERIENCE CARDS - Title (h4) Color */
+.white-vertion .experience-card h4 {
+  color: #00B9FF;
+}
+
+/* EXPERIENCE PREVIEW CONTAINER - Border */
+.white-vertion .experience-preview-container {
+  border: 1px solid rgba(0, 185, 255, 0.3);
+}
+
+/* CERTIFICATES / PORTFOLIO NAV - Current Item Underline */
+.white-vertion .portfolio-nav ul li.current span {
+  border-bottom: 2px solid #00B9FF;
+}
+
+/* CONTACT ME SECTION - Cards (Footer Address Items) */
+.white-vertion .mh-footer-address .mh-address-footer-item .each-icon .fa {
+  border-color: #00B9FF;
+}
+
+.white-vertion .mh-address-footer-item:hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 185, 255, 0.2),
+    inset 0 0 0 1px rgba(0, 185, 255, 0.3);
+  border-color: rgba(0, 185, 255, 0.4);
+}
+
+/* HOME SECTION - "Hello I'm" Promo Span */
+.white-vertion .mh-home .mh-header-info .mh-promo span {
+  background-color: #00B9FF;
+  color: #fff;
+}
+
+/* HOME SECTION - Social Icons (GitHub, LinkedIn) Hover */
+.white-vertion .mh-home .mh-header-info .social-icon li .fa:hover {
+  background-color: #000;
+  color: #00B9FF;
 }
