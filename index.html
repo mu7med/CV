@@ -28,7 +28,9 @@
     <link rel="shortcut icon" sizes="114x114" href="assets/images/apple-icon-114x114.png">
 
     <!-- Google Font-->
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Roboto:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="assets/icons/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
@@ -70,6 +72,7 @@
         ===================
         -->
     <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav wow fadeInUp" id="mh-header">
+        <div id="scroll-progress-bar" class="scroll-progress-bar" aria-hidden="true"></div>
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -119,10 +122,16 @@
         -->
     <section class="mh-home" id="mh-home">
         <div class="home-ovimg">
+            <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-hidden="true"></canvas>
             <div class="container">
                 <div class="row xs-column-reverse section-separator vertical-middle-content home-padding">
                     <div class="col-sm-6">
                         <div class="mh-header-info">
+                            <div class="hud-status-pill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.05s">
+                                <span class="status-dot"></span>
+                                <span class="status-text">SYSTEMS ONLINE · RIYADH, KSA</span>
+                            </div>
+
                             <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
                                 <span>Hello I'm</span>
                             </div>
@@ -145,19 +154,31 @@
                             </ul>
 
                             <ul class="social-icon wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                <li><a href="https://github.com/mu7med" target="_blank"><i class="fa fa-github"></i></a>
+                                <li><a href="https://github.com/mu7med" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github"></i></a>
                                 </li>
-                                <li><a href="https://www.linkedin.com/in/mohammed--abdullah" target="_blank"><i
+                                <li><a href="https://www.linkedin.com/in/mohammed--abdullah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
                                             class="fa fa-linkedin"></i></a></li>
 
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="hero-img wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
+                        <div class="hero-img hero-orb-stage wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
+                            <div class="spatial-float-badge badge-top-left" aria-hidden="true">
+                                <i class="fa fa-shield"></i> <span>CKS &amp; CKA</span>
+                            </div>
+                            <div class="spatial-float-badge badge-top-right" aria-hidden="true">
+                                <i class="fa fa-cloud"></i> <span>Multi-Cloud</span>
+                            </div>
                             <div class="img-border">
                                 <img src="assets/images/profile-hero.webp" alt="Mohammed Abdullah - DevOps Engineer"
                                     class="img-fluid">
+                            </div>
+                            <div class="spatial-float-badge badge-bottom-left" aria-hidden="true">
+                                <i class="fa fa-cubes"></i> <span>15+ Yrs Exp</span>
+                            </div>
+                            <div class="spatial-float-badge badge-bottom-right" aria-hidden="true">
+                                <i class="fa fa-code-fork"></i> <span>GitOps &amp; IaC</span>
                             </div>
                         </div>
                     </div>
@@ -188,10 +209,45 @@
                             cost-efficiency. From automating CI/CD workflows at Oracle to architecting healthcare
                             systems at Cerner, I deliver uptime and scalability.</p>
                         <div class="mh-about-tag wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-
+                            <ul>
+                                <li><span>Kubernetes (CKA/CKS)</span></li>
+                                <li><span>OCI / AWS / Azure</span></li>
+                                <li><span>Terraform &amp; Ansible</span></li>
+                                <li><span>ArgoCD &amp; GitOps</span></li>
+                                <li><span>DevSecOps</span></li>
+                                <li><span>Prometheus &amp; Grafana</span></li>
+                            </ul>
                         </div>
                         <a href="Resume.pdf" class="btn btn-fill wow fadeInUp" target="_blank" data-wow-duration="0.8s"
                             data-wow-delay="0.4s">Download CV <i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Impact Metrics Bar -->
+            <div class="row impact-metrics-row wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                <div class="col-6 col-md-3">
+                    <div class="impact-metric-card hud-bracket">
+                        <div class="impact-counter-value" data-count="15" data-suffix="+">15+</div>
+                        <div class="impact-counter-label">Years Enterprise Exp</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="impact-metric-card hud-bracket">
+                        <div class="impact-counter-value" data-count="35" data-suffix="%">35%</div>
+                        <div class="impact-counter-label">Faster Release Cycles</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="impact-metric-card hud-bracket">
+                        <div class="impact-counter-value" data-count="100" data-suffix="%">100%</div>
+                        <div class="impact-counter-label">Tier-2/3 SLA Compliance</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="impact-metric-card hud-bracket">
+                        <div class="impact-counter-value" data-count="23" data-suffix="">23</div>
+                        <div class="impact-counter-label">Global Certifications</div>
                     </div>
                 </div>
             </div>
@@ -221,17 +277,37 @@
                         <div class="mh-professional-skill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                             <h3>Technical Skills</h3>
                             <div class="each-skills">
-                                <ul class="work-responsibility">
-                                    <li><i class="fa fa-circle"></i> <strong>Operation:</strong> Advanced System
-                                        Administration, Monitoring, Incident Management</li>
-                                    <li><i class="fa fa-circle"></i> <strong>Cloud:</strong> OCI, AWS, Azure, Hybrid
-                                        Architectures</li>
-                                    <li><i class="fa fa-circle"></i> <strong>Orchestration:</strong> Kubernetes
-                                        (CKA/CKS), Docker, Helm</li>
-                                    <li><i class="fa fa-circle"></i> <strong>IaC & Automation:</strong> Terraform,
-                                        Ansible, Jenkins, ArgoCD</li>
-                                    <li><i class="fa fa-circle"></i> <strong>Security:</strong> DevSecOps, Compliance,
-                                        Network Security</li>
+                                <ul class="work-responsibility skills-bento-grid">
+                                    <li class="skill-bento-card hud-bracket">
+                                        <div class="skill-bento-icon"><i class="fa fa-terminal"></i></div>
+                                        <div class="skill-bento-body">
+                                            <strong>Operation:</strong> Advanced System Administration, Monitoring, Incident Management
+                                        </div>
+                                    </li>
+                                    <li class="skill-bento-card hud-bracket">
+                                        <div class="skill-bento-icon"><i class="fa fa-cloud"></i></div>
+                                        <div class="skill-bento-body">
+                                            <strong>Cloud:</strong> OCI, AWS, Azure, Hybrid Architectures
+                                        </div>
+                                    </li>
+                                    <li class="skill-bento-card hud-bracket">
+                                        <div class="skill-bento-icon"><i class="fa fa-cubes"></i></div>
+                                        <div class="skill-bento-body">
+                                            <strong>Orchestration:</strong> Kubernetes (CKA/CKS), Docker, Helm
+                                        </div>
+                                    </li>
+                                    <li class="skill-bento-card hud-bracket">
+                                        <div class="skill-bento-icon"><i class="fa fa-cogs"></i></div>
+                                        <div class="skill-bento-body">
+                                            <strong>IaC &amp; Automation:</strong> Terraform, Ansible, Jenkins, ArgoCD
+                                        </div>
+                                    </li>
+                                    <li class="skill-bento-card hud-bracket">
+                                        <div class="skill-bento-icon"><i class="fa fa-shield"></i></div>
+                                        <div class="skill-bento-body">
+                                            <strong>Security:</strong> DevSecOps, Compliance, Network Security
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -275,11 +351,14 @@
                 <div class="row section-separator">
                     <div class="col-sm-12">
                         <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s"
-                            style="margin-bottom: 50px; text-align: center;">Work Experience</h3>
+                            style="margin-bottom: 12px; text-align: center;">Work Experience</h3>
+                        <p class="experience-subtitle wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.25s">
+                            Select any role below to inspect architectural impact &amp; technology stack
+                        </p>
                         <div class="experience-grid">
                             <!-- Card 1: Malath Insurance (Current) -->
                             <div class="card-wrapper">
-                                <div class="experience-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s"
+                                <div class="experience-card hud-bracket wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s"
                                     id="card-malath" data-id="malath">
                                     <div class="header-content">
                                         <h4>DevOps Engineer</h4>
@@ -288,6 +367,10 @@
                                         <div class="core-focus">Directing the full SDLC and release strategy for
                                             enterprise
                                             insurance applications, bridging the gap between development and operations.
+                                        </div>
+                                        <div class="card-action-cue">
+                                            <span>Inspect Architecture &amp; Impact</span>
+                                            <i class="fa fa-angle-right"></i>
                                         </div>
                                     </div>
                                     <div class="card-details hidden-content">
@@ -322,7 +405,7 @@
 
                             <!-- Card 2: Oracle (Cloud Expert) -->
                             <div class="card-wrapper">
-                                <div class="experience-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"
+                                <div class="experience-card hud-bracket wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"
                                     id="card-oracle" data-id="oracle">
                                     <div class="header-content">
                                         <h4>Operations Engineer (Cloud & Infra)</h4>
@@ -331,6 +414,10 @@
                                         <div class="core-focus">Managing multi-cloud Kubernetes environments and
                                             executing
                                             legacy-to-microservices migrations on OCI.</div>
+                                        <div class="card-action-cue">
+                                            <span>Inspect Architecture &amp; Impact</span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
                                     </div>
                                     <div class="card-details hidden-content">
                                         <div class="key-impact">
@@ -363,7 +450,7 @@
 
                             <!-- Card 3: Cerner (Healthcare) -->
                             <div class="card-wrapper">
-                                <div class="experience-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"
+                                <div class="experience-card hud-bracket wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"
                                     id="card-cerner" data-id="cerner">
                                     <div class="header-content">
                                         <h4>HIS Analyst / System Engineer</h4>
@@ -372,6 +459,10 @@
                                         <div class="core-focus">Leading technical implementation of Cerner Millennium
                                             solutions
                                             across major hospital networks.</div>
+                                        <div class="card-action-cue">
+                                            <span>Inspect Architecture &amp; Impact</span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
                                     </div>
                                     <div class="card-details hidden-content">
                                         <div class="key-impact">
@@ -402,7 +493,7 @@
 
                             <!-- Card 4: Injazat (Foundation) -->
                             <div class="card-wrapper">
-                                <div class="experience-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"
+                                <div class="experience-card hud-bracket wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"
                                     id="card-injazat" data-id="injazat">
                                     <div class="header-content">
                                         <h4>IT Engineer</h4>
@@ -411,6 +502,10 @@
                                         <div class="core-focus">Managing hybrid infrastructure and ensuring network
                                             security
                                             compliance.</div>
+                                        <div class="card-action-cue">
+                                            <span>Inspect Architecture &amp; Impact</span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
                                     </div>
                                     <div class="card-details hidden-content">
                                         <div class="key-impact">
@@ -438,7 +533,7 @@
 
                             <!-- Card 5: Early Career (Summary) -->
                             <div class="card-wrapper">
-                                <div class="experience-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s"
+                                <div class="experience-card hud-bracket wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s"
                                     id="card-early" data-id="early">
                                     <div class="header-content">
                                         <h4>Previous Experience</h4>
@@ -447,6 +542,10 @@
                                         <div class="core-focus">Foundational experience in network architecture and
                                             systems
                                             engineering.</div>
+                                        <div class="card-action-cue">
+                                            <span>Inspect Architecture &amp; Impact</span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
                                     </div>
                                     <div class="card-details hidden-content">
                                         <div class="key-impact">
@@ -497,13 +596,13 @@
                     <div class="portfolio-nav col-sm-12" id="filter-button">
                         <ul>
                             <li data-filter="*" class="current wow fadeInUp" data-wow-duration="0.8s"
-                                data-wow-delay="0.1s"> <span>All Categories</span></li>
+                                data-wow-delay="0.1s"> <span>All Categories <small class="filter-count">23</small></span></li>
                             <li data-filter=".user-interface" class="wow fadeInUp" data-wow-duration="0.8s"
-                                data-wow-delay="0.2s"><span>DevOps and cloud</span></li>
+                                data-wow-delay="0.2s"><span>DevOps and cloud <small class="filter-count">10</small></span></li>
                             <li data-filter=".branding" class="wow fadeInUp" data-wow-duration="0.8s"
-                                data-wow-delay="0.3s"><span>System</span></li>
+                                data-wow-delay="0.3s"><span>System <small class="filter-count">5</small></span></li>
                             <li data-filter=".mockup" class="wow fadeInUp" data-wow-duration="0.8s"
-                                data-wow-delay="0.4s"><span>Network Certificates</span></li>
+                                data-wow-delay="0.4s"><span>Network Certificates <small class="filter-count">8</small></span></li>
 
                         </ul>
                     </div>
@@ -572,7 +671,7 @@
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">ArgoCD</h5>
                                         <span class="sub-title">DevOps and cloud</span>
-                                        <a data-fancybox data-src="#ArgoCD"></a>
+                                        <a href="DevOps_and_cloud/ArgoCD.png" data-fancybox data-src="#ArgoCD"></a>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -870,120 +969,89 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>ArgoCD</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/ArgoCD.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/ArgoCD.png" alt="ArgoCD Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
-
-
 
         <div class="mh-portfolio-modal" id="CKA">
             <div class="container">
-                <div class="row ">
+                <div class="row">
                     <div class="col-sm-5">
                         <h2>CKA</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/CKA.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/CKA.png" alt="CKA Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
-
 
         <div class="mh-portfolio-modal" id="AWS">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>AWS Certified Cloud Practitioner</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/AWS Certified Cloud Practitioner.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/AWS Certified Cloud Practitioner.png" alt="AWS Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <!--------------------------------------------------------1------------------------------------------------------------------------------->
+
         <div class="mh-portfolio-modal" id="CKS">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>CKS</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/CKS.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/CKS.png" alt="CKS Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <!--------------------------------------------------------------------------------------------------------------------------------------->
-        <!--------------------------------------------------------------2------------------------------------------------------------------------->
+
         <div class="mh-portfolio-modal" id="Azure">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Microsoft Azure</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/Microsoft Azure.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/Microsoft Azure.png" alt="Microsoft Azure Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <!--------------------------------------------------------------------------------------------------------------------------------------->
-        <!-------------------------------------------------------------3-------------------------------------------------------------------------->
+
         <div class="mh-portfolio-modal" id="OCI">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>OCI Devops Professional 2023</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/OCI Devops Professional 2023.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/OCI Devops Professional 2023.png" alt="OCI DevOps Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Oracle">
@@ -991,57 +1059,47 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Oracle Cloud Infrastructure 2021 Architect Associate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Architect Associate.png" alt=""
+                        <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Architect Associate.png" alt="OCI Architect Associate Certificate"
                             class="img-fluid">
-
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+
         <div class="mh-portfolio-modal" id="Oracle2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Oracle Cloud Infrastructure 2021 Certified Architect Professional</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Certified Architect Professional.png"
-                            alt="" class="img-fluid">
-
+                            alt="OCI Architect Professional Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+
         <div class="mh-portfolio-modal" id="Oracle3">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Oracle Cloud Infrastructure 2021 Cloud Operations Associate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Cloud Operations Associate.png"
-                            alt="" class="img-fluid">
-
+                            alt="OCI Cloud Operations Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Prometheus">
@@ -1049,57 +1107,45 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Prometheus</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/Prometheus.png" alt="" class="img-fluid">
-
+                        <img src="DevOps_and_cloud/Prometheus.png" alt="Prometheus Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <!-------------------------------------------------------------------systen-------------------------------------------------------------------->
 
         <div class="mh-portfolio-modal" id="AXELOS">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>AXELOS</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/AXELOS.png" alt="" class="img-fluid">
-
+                        <img src="System/AXELOS.png" alt="AXELOS Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+
         <div class="mh-portfolio-modal" id="VMware">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>VMware Certified Professional (VCP) 6 - Data Center Virtualization certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="System/VMware Certified Professional (VCP) 6 - Data Center Virtualization certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="VMware VCP 6 Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="MCP">
@@ -1107,18 +1153,14 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>MCP</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCP.png" alt="" class="img-fluid">
-
+                        <img src="System/MCP.png" alt="MCP Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="MCITP_2008">
@@ -1126,18 +1168,14 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>MCITP_2008</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCITP_2008.png" alt="" class="img-fluid">
-
+                        <img src="System/MCITP_2008.png" alt="MCITP 2008 Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="MCSA_2012">
@@ -1145,39 +1183,30 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>MCSA_2012</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCSA_2012.png" alt="" class="img-fluid">
-
+                        <img src="System/MCSA_2012.png" alt="MCSA 2012 Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <!-------------------------------------------------------------------Network-------------------------------------------------------------------->
 
         <div class="mh-portfolio-modal" id="Cisco1">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Cisco Certified Network Associate Routing and Switching certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Associate Routing and Switching certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="CCNA R&S Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco2">
@@ -1185,19 +1214,15 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Cisco Certified Network Associate Security certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Associate Security certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="CCNA Security Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco3">
@@ -1205,59 +1230,47 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Cisco Certified Network Professional Enterprise certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Professional Enterprise certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="CCNP Enterprise Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+
         <div class="mh-portfolio-modal" id="Cisco4">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Cisco Certified Network Professional Routing and Switching certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Professional Routing and Switching certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="CCNP R&S Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco5">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
-                        <h2>Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation certificate
-                        </h2>
-
+                        <h2>Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation certificate</h2>
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="Cisco Enterprise Advanced Infrastructure Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco6">
@@ -1265,19 +1278,15 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Cisco Certified Specialist - Enterprise Core certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Core certificate.png"
-                            alt="" class="img-fluid">
-
+                            alt="Cisco Enterprise Core Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco7">
@@ -1285,18 +1294,14 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Junos certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="Network_Certificates/Junos certificate.png" alt="" class="img-fluid">
-
+                        <img src="Network_Certificates/Junos certificate.png" alt="Junos Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="mh-portfolio-modal" id="Cisco8">
@@ -1304,23 +1309,15 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Palo Alto ACE certificate</h2>
-
                     </div>
-
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="Network_Certificates/Palo Alto ACE certificate.png" alt="" class="img-fluid">
-
+                        <img src="Network_Certificates/Palo Alto ACE certificate.png" alt="Palo Alto ACE Certificate" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
-
-
-        <!---------------------------------------------------------------------------------------------------------------------------------------------->
     </section>
 
     <!--
@@ -1339,19 +1336,6 @@
 
     <!--
         ===================
-           BLOG
-        ===================
-        -->
-
-    <!--
-        ===================
-           TESTIMONIALS
-        ===================
-        -->
-
-
-    <!--
-        ===================
            FOOTER 1
         ===================
         -->
@@ -1365,7 +1349,7 @@
                     <div class="col-sm-12 mh-footer-address">
                         <div class="row">
                             <div class="col-sm-12 col-md-4">
-                                <div class="mh-address-footer-item dark-bg shadow-1 wow fadeInUp"
+                                <div class="mh-address-footer-item hud-bracket dark-bg shadow-1 wow fadeInUp"
                                     data-wow-duration="0.8s" data-wow-delay="0.3s">
                                     <div class="each-icon">
                                         <i class="fa fa-location-arrow"></i>
@@ -1379,7 +1363,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
-                                <div class="mh-address-footer-item dark-bg shadow-1 wow fadeInUp"
+                                <div class="mh-address-footer-item hud-bracket dark-bg shadow-1 wow fadeInUp"
                                     data-wow-duration="0.8s" data-wow-delay="0.5s">
                                     <div class="each-icon">
                                         <i class="fa fa-envelope-o"></i>
@@ -1387,30 +1371,26 @@
                                     <div class="each-info">
                                         <h4>Email</h4>
                                         <a href="mailto:mu7med@outlook.com">mu7med@outlook.com</a><br>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
-                                <div class="mh-address-footer-item dark-bg shadow-1 wow fadeInUp"
+                                <div class="mh-address-footer-item hud-bracket dark-bg shadow-1 wow fadeInUp"
                                     data-wow-duration="0.8s" data-wow-delay="0.7s">
                                     <div class="each-icon">
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="each-info">
                                         <h4>Phone</h4>
-                                        <a href="callto:+966 50 172 0250">+966 50 172 0250</a><br>
-
+                                        <a href="tel:+966 50 172 0250">+966 50 172 0250</a><br>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                         <div class="row">
-
                         </div>
                     </div>
                 </div>
@@ -1425,49 +1405,27 @@
     -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <!-- jQuery -->
     <script src="assets/plugins/js/jquery.min.js"></script>
-    <!-- popper -->
     <script src="assets/plugins/js/popper.min.js"></script>
-    <!-- bootstrap -->
     <script src="assets/plugins/js/bootstrap.min.js"></script>
-    <!-- owl carousel -->
     <script src="assets/plugins/js/owl.carousel.js"></script>
-    <!-- validator -->
     <script src="assets/plugins/js/validator.min.js"></script>
-    <!-- wow -->
     <script src="assets/plugins/js/wow.min.js"></script>
-    <!-- mixin js-->
     <script src="assets/plugins/js/jquery.mixitup.min.js"></script>
-    <!-- circle progress-->
     <script src="assets/plugins/js/circle-progress.js"></script>
-    <!-- jquery nav -->
     <script src="assets/plugins/js/jquery.nav.js"></script>
-    <!-- Fancybox js-->
     <script src="assets/plugins/js/jquery.fancybox.min.js"></script>
-    <!-- isotope js-->
     <script src="assets/plugins/js/isotope.pkgd.js"></script>
     <script src="assets/plugins/js/packery-mode.pkgd.js"></script>
     <!-- Map api -->
     <script
-        src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
     <!-- Custom Scripts-->
     <script src="assets/js/map-init.js"></script>
     <script src="assets/js/custom-scripts.js"></script>
     <script src="assets/js/theme-toggle.js"></script>
-
-
-    <!-- ****************
-      After neccessary customization/modification, Please minify 
-      JavaScript/jQuery according to http://browserdiet.com/en/ for better performance
-    **************** -->
-    <!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
-    <link rel="stylesheet" href="demo/demo.css">
-    <script type="text/javascript" src="demo/styleswitcher.js"></script>
-    <script type="text/javascript" src="demo/demo.js"></script>
-
     <script src="assets/js/experience.js"></script>
+    <script src="assets/js/spatial-3d.js"></script>
 </body>
 
 </html>
