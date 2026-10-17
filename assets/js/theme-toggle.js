@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.classList.add('fa-moon-o');
         localStorage.setItem('user-prefs', 'light');
         swapImages('light');
+        window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: 'light' } }));
     }
 
     function setDarkMode() {
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.classList.add('fa-sun-o');
         localStorage.setItem('user-prefs', 'dark');
         swapImages('dark');
+        window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: 'dark' } }));
     }
 
     // Initialization

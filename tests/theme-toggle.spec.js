@@ -74,4 +74,30 @@ test.describe('Theme Toggle', () => {
         const icon = toggleBtn.locator('i');
         await expect(icon).toHaveClass(/fa-sun-o/);
     });
+
+    test('should render 3D topology canvas, HUD status, spatial badges, and bento skills', async ({ page }) => {
+        const canvas = page.locator('#hero-3d-canvas');
+        await expect(canvas).toBeAttached();
+        const width = await canvas.evaluate(el => el.width);
+        expect(width).toBeGreaterThan(0);
+
+        await expect(page.locator('.hud-status-pill')).toContainText('SYSTEMS ONLINE');
+        await expect(page.locator('.spatial-float-badge')).toHaveCount(4);
+        await expect(page.locator('.impact-metric-card')).toHaveCount(4);
+        await expect(page.locator('.skill-bento-card')).toHaveCount(5);
+    });
+
+    test('should auto-open current role in Experience Master-Detail and switch on card click', async ({ page }) => {
+        await page.locator('#mh-experience').scrollIntoViewIfNeeded();
+        const preview = page.locator('#experience-preview');
+        await expect(preview).toBeVisible();
+        await expect(page.locator('#preview-role')).toHaveText('DevOps Engineer');
+
+        // Click Oracle card to switch detail view
+        const oracleCard = page.locator('#card-oracle');
+        await oracleCard.scrollIntoViewIfNeeded();
+        await oracleCard.click();
+        await expect(page.locator('#preview-role')).toHaveText('Operations Engineer (Cloud & Infra)');
+    });
 });
+
