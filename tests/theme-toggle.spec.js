@@ -75,16 +75,43 @@ test.describe('Theme Toggle', () => {
         await expect(icon).toHaveClass(/fa-sun-o/);
     });
 
-    test('should render 3D topology canvas, HUD status, spatial badges, and bento skills', async ({ page }) => {
+    test('should verify API key removal, HUD box removal, About Me alignment, and theme-colored Technical Skill icons', async ({ page }) => {
+        const htmlContent = await page.content();
+        expect(htmlContent).not.toContain('AIzaSy');
+
         const canvas = page.locator('#hero-3d-canvas');
         await expect(canvas).toBeAttached();
         const width = await canvas.evaluate(el => el.width);
         expect(width).toBeGreaterThan(0);
 
-        await expect(page.locator('.hud-status-pill')).toContainText('SYSTEMS ONLINE');
-        await expect(page.locator('.spatial-float-badge')).toHaveCount(4);
-        await expect(page.locator('.impact-metric-card')).toHaveCount(4);
-        await expect(page.locator('.skill-bento-card')).toHaveCount(5);
+        // Verify green HUD status pill and About_me images are removed
+        await expect(page.locator('.hud-status-pill')).toHaveCount(0);
+        await expect(page.locator('img[src*="About_me"]')).toHaveCount(0);
+
+        // Verify About Me alignment and increased typography
+        const aboutStyles = await page.locator('.mh-about-inner p').evaluate(el => {
+            const cs = window.getComputedStyle(el);
+            return {
+                textAlign: cs.textAlign,
+                fontSize: parseFloat(cs.fontSize)
+            };
+        });
+        expect(aboutStyles.textAlign).toBe('center');
+        expect(aboutStyles.fontSize).toBeGreaterThanOrEqual(18);
+
+        // Verify Technical Skills icons are visible, have no rounded square background, and match Dark/Light theme colors
+        const skillIcons = page.locator('.skill-bento-icon .fa');
+        await expect(skillIcons).toHaveCount(5);
+        for (let i = 0; i < 5; i++) {
+            await expect(skillIcons.nth(i)).toBeVisible();
+        }
+
+        await expect(skillIcons.first()).toHaveCSS('color', 'rgb(255, 193, 7)');
+
+        await page.locator('#theme-toggle').click();
+        await expect(page.locator('body')).toHaveClass(/white-vertion/);
+
+        await expect(skillIcons.first()).toHaveCSS('color', 'rgb(0, 185, 255)');
     });
 
     test('should auto-open current role in Experience Master-Detail and switch on card click', async ({ page }) => {

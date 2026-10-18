@@ -4,3 +4,6 @@ playwright-report/
 .gemini/
 .DS_Store
 Thumbs.db
+.env
+.env.*
+assets/js/env-config.js

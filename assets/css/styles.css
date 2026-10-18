@@ -1633,7 +1633,7 @@ body {
 }
 
 .mh-skills .work-responsibility li .fa {
-  display: none;
+  display: inline-block;
 }
 
 .mh-professional-skills {
@@ -4590,7 +4590,6 @@ body.white-vertion {
 .mh-eduyear,
 .tech-badge,
 .filter-count,
-.hud-status-pill,
 .card-action-cue {
   font-family: var(--font-mono);
 }
@@ -4637,42 +4636,70 @@ body.white-vertion {
   z-index: 2;
 }
 
-/* 4. Live DevOps HUD Status Pill */
-.hud-status-pill {
+/* 4. About Me Section Alignment & Enhanced Typography */
+.mh-about .mh-about-inner {
+  padding-left: 0 !important;
+  max-width: 880px;
+  margin: 0 auto !important;
+  text-align: center;
+}
+
+.mh-about .mh-about-inner h2 {
+  font-size: clamp(2.15rem, 3.2vw, 2.75rem);
+  line-height: 1.2;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.mh-about .mh-about-inner p {
+  font-size: clamp(1.15rem, 1.45vw, 1.35rem);
+  line-height: 1.8;
+  max-width: 820px;
+  margin: 0 auto 30px auto;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.white-vertion .mh-about .mh-about-inner p {
+  color: #2d3748;
+}
+
+.mh-about .mh-about-tag {
+  margin: 0 auto 32px auto;
+  word-break: normal;
+}
+
+.mh-about .mh-about-tag ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding-left: 0;
+  margin: 0;
+}
+
+.mh-about .mh-about-tag ul li {
+  margin: 0;
+  padding: 0;
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 14px;
-  margin-bottom: 16px;
-  border-radius: 999px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 11px;
+}
+
+.mh-about .mh-about-tag ul li span {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-primary);
+  background: rgba(var(--accent-rgb), 0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mh-about .mh-about-inner .btn {
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #34d399;
-}
-
-.white-vertion .hud-status-pill {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.45);
-  color: #047857;
-}
-
-.hud-status-pill .status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--status-emerald);
-  box-shadow: 0 0 10px var(--status-emerald);
-  animation: pulseHudDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseHudDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.35); opacity: 0.65; }
+  padding: 12px 34px;
+  margin-top: 6px;
 }
 
 /* 5. Spatial 3D Hero Orb & Volumetric Floating Badges */
@@ -4835,21 +4862,41 @@ body.white-vertion {
 
 .skill-bento-icon {
   flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(var(--accent-rgb), 0.12);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  background: transparent;
+  border: none;
+  border-radius: 0;
   color: var(--accent-primary);
-  font-size: 18px;
+}
+
+.mh-skills .work-responsibility.skills-bento-grid li .skill-bento-icon .fa {
+  display: inline-block !important;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--accent-primary);
+  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.32));
+  transition: transform 0.25s ease, color 0.3s ease;
+}
+
+.dark-vertion .mh-skills .work-responsibility.skills-bento-grid li .skill-bento-icon .fa {
+  color: #ffc107;
+}
+
+.white-vertion .mh-skills .work-responsibility.skills-bento-grid li .skill-bento-icon .fa {
+  color: #00B9FF;
+}
+
+.mh-skills .work-responsibility.skills-bento-grid li:hover .skill-bento-icon .fa {
+  transform: scale(1.14);
 }
 
 .skill-bento-body {
-  font-size: 14.5px;
-  line-height: 1.5;
+  font-size: 15.5px;
+  line-height: 1.55;
   color: #e2e8f0;
 }
 
@@ -4885,7 +4932,13 @@ body.white-vertion {
   opacity: 1;
 }
 
-/* 3D Pointer Tilt Integration on Experience Cards */
+/* 3D Pointer Tilt Integration on Experience Cards & Section Visibility */
+.mh-professional-skill.wow,
+.mh-professional-skills.wow,
+.mh-about .wow {
+  visibility: visible !important;
+}
+
 .experience-card,
 .experience-card.wow {
   visibility: visible !important;

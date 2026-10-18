@@ -10,11 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
             selector: 'img[src*="profile-hero"]',
             dark: 'assets/images/profile-hero.webp',
             light: 'assets/images/profile-hero-w.png'
-        },
-        {
-            selector: 'img[src*="About_me"]',
-            dark: 'assets/images/About_me.png',
-            light: 'assets/images/About_me_blue.png'
         }
     ];
 
