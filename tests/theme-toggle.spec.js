@@ -101,8 +101,8 @@ test.describe('Theme Toggle', () => {
 
         // Verify Technical Skills icons are visible, have no rounded square background, and match Dark/Light theme colors
         const skillIcons = page.locator('.skill-bento-icon .fa');
-        await expect(skillIcons).toHaveCount(5);
-        for (let i = 0; i < 5; i++) {
+        await expect(skillIcons).toHaveCount(6);
+        for (let i = 0; i < 6; i++) {
             await expect(skillIcons.nth(i)).toBeVisible();
         }
 
@@ -112,6 +112,77 @@ test.describe('Theme Toggle', () => {
         await expect(page.locator('body')).toHaveClass(/white-vertion/);
 
         await expect(skillIcons.first()).toHaveCSS('color', 'rgb(0, 185, 255)');
+    });
+
+    test('should verify Agentic AI & AgentOps repositioning, 4 Featured Agentic Systems, Certs Accordion, and zero console errors', async ({ page }) => {
+        const consoleErrors = [];
+        page.on('console', msg => {
+            if (msg.type() === 'error') {
+                consoleErrors.push(msg.text());
+            }
+        });
+        page.on('pageerror', err => {
+            consoleErrors.push(err.message);
+        });
+
+        await page.setViewportSize({ width: 1280, height: 800 });
+        await page.goto('http://localhost:8000/index.html', { waitUntil: 'networkidle' });
+
+        // Phase 0 & 1: Title, Hero subheadline, Meta description, and zero secrets
+        await expect(page).toHaveTitle('Mohammed Abdullah | DevOps Engineer — Agentic AI & AgentOps');
+        await expect(page.locator('.mh-header-info h4')).toHaveText('DevOps Engineer | Agentic AI & AgentOps');
+
+        const htmlContent = await page.content();
+        expect(htmlContent).not.toMatch(/AIza[0-9A-Za-z\-_]{10,}|sk-[0-9A-Za-z]{20,}|ghp_[0-9A-Za-z]{20,}/);
+        await expect(page.locator('.mh-about-inner p')).toContainText('I build autonomous systems on top of production-grade infrastructure discipline — the part of AI projects that usually kills them.');
+
+        // Phase 2: All 4 Featured Agentic Systems cards render visibly
+        const agenticCards = page.locator('#mh-agentic-systems .agentic-system-card');
+        await expect(agenticCards).toHaveCount(4);
+        await page.locator('#mh-agentic-systems').scrollIntoViewIfNeeded();
+        for (let i = 0; i < 4; i++) {
+            await expect(agenticCards.nth(i)).toBeVisible();
+        }
+
+        const artifactDir = 'E:/Users/Mu7med/.gemini/antigravity/brain/69ee0081-2160-420a-91b7-e72cbd569207';
+        await page.screenshot({ path: `${artifactDir}/verify-desktop-agentic-systems.png` });
+
+        // Phase 3: In-Progress AI certs, AI & Agentic filter tab, AgentOps & Guardrails callout, and Earlier Certs accordion
+        await page.locator('#mh-portfolio').scrollIntoViewIfNeeded();
+        await expect(page.locator('#filter-button li[data-filter=".ai-agentic"]')).toBeVisible();
+        await expect(page.locator('.in-progress-cert-card')).toHaveCount(2);
+        await expect(page.locator('.agentops-guardrails-callout')).toBeVisible();
+
+        const toggleBtn = page.locator('#earlier-certs-toggle');
+        const accordionPanel = page.locator('#earlier-certs-panel');
+        await expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+        await expect(accordionPanel).toBeHidden();
+
+        await toggleBtn.scrollIntoViewIfNeeded();
+        await toggleBtn.click();
+        await expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+        await expect(accordionPanel).toBeVisible();
+        await expect(accordionPanel.locator('.grid-item')).toHaveCount(7);
+
+        await page.screenshot({ path: `${artifactDir}/verify-desktop-certs-accordion.png` });
+
+        // Collapse back
+        await toggleBtn.click();
+        await expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+        await expect(accordionPanel).toBeHidden();
+
+        // Capture Hero desktop screenshot
+        await page.locator('#mh-home').scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `${artifactDir}/verify-desktop-hero.png` });
+
+        // Capture Mobile viewport screenshots (390x844)
+        await page.setViewportSize({ width: 390, height: 844 });
+        await page.locator('#mh-home').scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `${artifactDir}/verify-mobile-hero.png` });
+        await page.locator('#mh-agentic-systems').scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `${artifactDir}/verify-mobile-agentic-systems.png` });
+
+        expect(consoleErrors).toEqual([]);
     });
 
     test('should auto-open current role in Experience Master-Detail and switch on card click', async ({ page }) => {

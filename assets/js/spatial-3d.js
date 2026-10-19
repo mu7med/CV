@@ -21,9 +21,9 @@
             this.nodes = [];
             this.pulses = [];
             this.nodeLabels = [
-                'K8s (CKA/CKS)', 'OCI', 'AWS', 'Azure', 'ArgoCD',
-                'Terraform', 'Prometheus', 'Helm', 'Docker', 'DevSecOps',
-                'Liquibase', 'Grafana', 'Ansible', 'CI/CD'
+                'K8s (CKA/CKS)', 'MCP', 'AgentOps', 'LLM Gateway', 'RAG',
+                'OCI', 'AWS', 'Azure', 'ArgoCD', 'Terraform',
+                'Prometheus', 'Helm', 'Docker', 'CI/CD'
             ];
 
             this.rotationX = 0.15;
@@ -316,6 +316,9 @@
         const interactiveSelectors = [
             '.experience-card',
             '.skill-bento-card',
+            '.agentic-system-card',
+            '.in-progress-cert-card',
+            '.agentops-guardrails-callout',
             '.mh-address-footer-item',
             '.impact-metric-card',
             '.mh-project-gallery .grid-item figure'
@@ -429,6 +432,34 @@
     }
 
     /* ==========================================================================
+       4. EARLIER CERTIFICATIONS ACCORDION TOGGLE
+       ========================================================================== */
+    function initCertAccordion() {
+        const accordion = document.getElementById('earlier-certs-accordion');
+        const toggleBtn = document.getElementById('earlier-certs-toggle');
+        const panel = document.getElementById('earlier-certs-panel');
+        if (!accordion || !toggleBtn || !panel) return;
+
+        const actionText = toggleBtn.querySelector('.toggle-action-text');
+
+        toggleBtn.addEventListener('click', () => {
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            const nextState = !isExpanded;
+
+            toggleBtn.setAttribute('aria-expanded', String(nextState));
+            accordion.classList.toggle('is-open', nextState);
+
+            if (nextState) {
+                panel.removeAttribute('hidden');
+                if (actionText) actionText.textContent = 'Hide Earlier Certifications';
+            } else {
+                panel.setAttribute('hidden', '');
+                if (actionText) actionText.textContent = 'Show Earlier Certifications';
+            }
+        });
+    }
+
+    /* ==========================================================================
        INITIALIZATION
        ========================================================================== */
     document.addEventListener('DOMContentLoaded', () => {
@@ -446,5 +477,6 @@
         }
         initSpatialMotion();
         initScrollHUD();
+        initCertAccordion();
     });
 })();
