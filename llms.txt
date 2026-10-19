@@ -1,0 +1,25 @@
+# Mohammed Abdullah — DevOps Engineer | Agentic AI & AgentOps
+
+> Senior DevOps Engineer and Agentic AI / AgentOps practitioner based in Riyadh, Saudi Arabia, with 15+ years operating mission-critical enterprise infrastructure and production multi-agent systems.
+
+## Summary
+I spent 15+ years running mission-critical enterprise infrastructure across Oracle, Cerner, and enterprise insurance DevOps in Riyadh—architecting Kubernetes clusters, Terraform platforms, and zero-downtime CI/CD pipelines. Today, I apply that same SRE rigor to build and operate autonomous agents, multi-provider LLM routing gateways, and Model Context Protocol (MCP) tooling in production daily. I build autonomous systems on top of production-grade infrastructure discipline — the part of AI projects that usually kills them.
+
+## Core Focus Areas
+- **Agentic AI & Orchestration**: MCP Server Architecture, Multi-Agent Workflows, LLM Gateways & Fallback Routing, Agentic Search / RAG, Tool Calling, Agent Observability, Python & Bash Automation.
+- **Cloud & Kubernetes**: AWS, Microsoft Azure, Oracle Cloud Infrastructure (OCI), Kubernetes (CKS, CKA, CKAD, KCNA), Helm, Docker, Cilium, Containerd.
+- **Infrastructure as Code & GitOps**: Terraform, Terragrunt, Ansible, ArgoCD, GitOps Workflows, Linux Administration.
+- **CI/CD & DevSecOps**: Azure DevOps, GitHub Actions, GitLab CI, Jenkins, RBAC/ABAC Governance, SonarQube, Trivy, HashiCorp Vault, DevSecOps Supply-Chain Security.
+- **Observability & SRE**: Prometheus (PCA), Grafana, ELK Stack, OpenTelemetry, SLOs & Incident Response.
+
+## Featured Agentic Systems
+1. **Multi-Provider LLM Gateway with Cost FinOps**: OpenAI-compatible gateway routing across 10+ model providers with health-probed fallback chains, complexity-aware escalation, and per-model token/cost accounting.
+2. **Autonomous Web-Intelligence Research Agent**: Tavily MCP-powered deep-research agent that discovers emerging tech, extracts structured telemetry, and maintains a machine-readable knowledge vault.
+3. **24/7 Telegram Monitoring & Alerting Agent**: Multi-channel monitoring (11 channels), scheduled sweeps, voice-note transcription (Arabic/English STT), and filtered alerting running continuously on edge hardware (Android/Termux).
+4. **Cross-Device Agent Fleet (A2A + MCP)**: Self-hosted multi-agent system coordinating agents across Termux, Windows, and WSL over agent-to-agent protocols with SSH/Tailscale fallbacks.
+
+## Links & Contact
+- **Website**: https://mu7med.org/
+- **GitHub**: https://github.com/mu7med
+- **LinkedIn**: https://www.linkedin.com/in/mohammed-abdullah-09498093/
+- **Location**: Riyadh, Saudi Arabia

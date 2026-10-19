@@ -26,8 +26,11 @@
 
 ```text
 CV-master/
-├── index.html                  # Single-page application entry point (~1,645 lines)
+├── index.html                  # Single-page application entry point (~1,672 lines)
 ├── CNAME                       # Custom domain binding: mu7med.org
+├── robots.txt                  # Search & AI Answer Engine crawler access rules + sitemap pointer
+├── sitemap.xml                 # Canonical XML sitemap for https://mu7med.org/
+├── llms.txt                    # Answer Engine Optimization (AEO/GEO) structured markdown profile
 ├── Resume.pdf                  # Current downloadable CV linked from #mh-about
 ├── Old_Resume.pdf              # Legacy CV archive
 ├── AI_Read_Me.md               # This comprehensive AI architectural knowledge base
@@ -45,17 +48,17 @@ CV-master/
 │   └── skills/                 # Installed AI agent skills (UI/UX, 3D/WebGL, Spatial AR/VR, Playwright, etc.)
 ├── assets/
 │   ├── css/
-│   │   ├── styles.css          # Primary stylesheet (~5,500 lines: base template + Dark/Light + Spatial 3D + Agentic UI)
+│   │   ├── styles.css          # Primary stylesheet (~5,950 lines: base + Dark/Light + Spatial 3D + Agentic UI + Mobile GPU Scroll)
 │   │   ├── responsive.css      # Breakpoint media queries (max-width: 1400px, 991px, 768px, 575px, 420px)
 │   │   └── colors/             # Legacy color stylesheets (defauld.css loaded by default)
 │   ├── js/
-│   │   ├── spatial-3d.js       # 3D Cloud/AgentOps Hero Topology Canvas, AR/VR Tilt, Spotlight, Scroll HUD & Cert Accordion
+│   │   ├── spatial-3d.js       # 3D Cloud/AgentOps Hero Topology Canvas, AR/VR Tilt, Spotlight, rAF Scroll HUD & Cert Accordion
 │   │   ├── theme-toggle.js     # Dark/Light theme switcher, localStorage persistence, hero image swap, custom event
 │   │   ├── experience.js       # Master-Detail controller for Work Experience (auto-opens latest role)
 │   │   ├── map-init.js         # Security-hardened Google Maps loader (reads key from runtime env config only)
-│   │   └── custom-scripts.js   # jQuery plugin initialization (WOW.js, Isotope, CircleProgress, Fancybox, Nav)
+│   │   └── custom-scripts.js   # jQuery plugin initialization (WOW.js, Isotope, CircleProgress, Fancybox, passive Nav Strict)
 │   ├── images/
-│   │   ├── profile-hero.webp   # Hero profile image (Dark Mode)
+│   │   ├── profile-hero.webp   # Hero profile image (Dark Mode — preloaded with fetchpriority="high")
 │   │   ├── profile-hero-w.png  # Hero profile image (Light Mode)
 │   │   ├── home-bg-img.jpg     # Hero background texture
 │   │   └── map-color-overlay.png # Contact footer background map texture
@@ -64,9 +67,12 @@ CV-master/
 │   └── plugins/                # Third-party CSS/JS plugins (Bootstrap 4, jQuery, Owl, Fancybox, Isotope, WOW)
 ├── DevOps_and_cloud/           # 11 DevOps, Kubernetes (CKA/CKS), Prometheus (PCA), OCI, AWS, Azure, ArgoCD, Terraform cert images
 ├── System/                     # 5 RedHat (RHCSA), VMware (VCP6), Microsoft (MCP, MCSA 2012, MCITP 2008) cert images
-├── Network_Certificates/       # 7 Cisco (CCNP Enterprise, CCNP R&S, Specialist, CCNA R&S, CCNA Security), FortinetNSE2, Avaya cert images
-└── tests/
-    └── theme-toggle.spec.js    # 7 Playwright E2E tests covering themes, security, 3D canvas, Agentic Systems, Skills, Certs Accordion, Experience
+├── images/
+│   ├── bg.webp                 # 4K compressed background texture (Dark Mode — 480 KB, replaces legacy 6.94 MB bg.png)
+│   ├── w-bg.webp               # 4K compressed background texture (Light Mode — 634 KB, replaces legacy 7.55 MB w-bg.png)
+│   └── ...
+├── tests/
+│   └── theme-toggle.spec.js    # 7 Playwright E2E tests covering themes, security, SEO/JSON-LD, mobile UI/scroll, Agentic Systems, Skills, Certs, Experience
 ```
 
 ---
@@ -79,7 +85,7 @@ The portfolio uses a **"Cloud Command Center & Spatial Glass"** aesthetic suppor
 
 | Token / Property | Dark Mode (`body.dark-vertion.black-bg` — Default) | Light Mode (`body.white-vertion`) |
 | :--- | :--- | :--- |
-| **Background** | `#100e17` / `#202026` | `#ffffff` / `#f8fafc` |
+| **Background** | `images/bg.webp` (480 KB WebP) / `#100e17` | `images/w-bg.webp` (634 KB WebP) / `#ffffff` |
 | **`--accent-primary`** | `#ffc107` (Cyber Gold) | `#00B9FF` (Malibu Azure Blue) |
 | **`--accent-rgb`** | `255, 193, 7` | `0, 185, 255` |
 | **`--surface-glass-bg`** | `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015))` | `linear-gradient(135deg, rgba(255,255,255,0.78), rgba(255,255,255,0.45))` |
@@ -197,4 +203,22 @@ Managed by `assets/js/experience.js` using a **Master-Detail Pattern**:
   ```powershell
   node .\node_modules\@playwright\test\cli.js test
   ```
-- `tests/theme-toggle.spec.js` runs **7** E2E tests verifying Dark/Light mode, persistence, absence of leaked secrets, centered `#mh-about` typography, 6 theme-colored `.skill-bento-icon .fa` icons, the 4 Featured Agentic Systems cards, the In-Progress AI certifications + AgentOps callout + Earlier Certifications accordion toggle, Experience Master-Detail switching, and zero browser console errors.
+- `tests/theme-toggle.spec.js` runs **7** E2E tests verifying Dark/Light mode, persistence, absence of leaked secrets, centered `#mh-about` typography, 6 theme-colored `.skill-bento-icon .fa` icons, the 4 Featured Agentic Systems cards, the In-Progress AI certifications + AgentOps callout + Earlier Certifications accordion toggle, Experience Master-Detail switching, SEO/JSON-LD metadata, mobile drawer & zero horizontal overflow, and zero browser console errors.
+
+### 5.3 SEO, AEO & Mobile 60fps Scroll Architecture
+- **Technical SEO & AEO Discovery**:
+  - `index.html` `<head>` includes `<link rel="canonical" href="https://mu7med.org/">`, `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`, Open Graph + Twitter Card tags, and a valid JSON-LD (`application/ld+json`) `@graph` defining `WebSite`, `ProfilePage`, and `Person`.
+  - Semantic HTML landmarks: `<header id="mh-header">`, `<nav aria-label="Primary Navigation">`, `<main id="main-content">`, and a single semantic `<h1>Mohammed Abdullah</h1>` in `#mh-home`.
+  - Root discovery files: `robots.txt` (explicitly allowing `GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`), `sitemap.xml`, and `llms.txt`.
+- **LCP, Image & Script Loading Budget**:
+  - Hero portrait (`assets/images/profile-hero.webp`) is preloaded in `<head>` with `fetchpriority="high"` and explicit `width="360" height="360"`.
+  - All 16 visible certificate thumbnails use `decoding="async"`, while the 7 collapsed pre-2016 thumbnails in `#earlier-certs-panel` and all 23 hidden Fancybox modal images use `loading="lazy" decoding="async"` (preventing 30 hidden PNGs from competing for initial mobile bandwidth).
+  - OpenWidget chat script (`cdn.openwidget.com/openwidget.js`) is deferred via `window.__ow.asyncInit = true` + `requestIdleCallback` after `window.load`.
+- **Smooth Mobile Scrolling & Background Asset Architecture**:
+  - **4K High-Resolution Background Compression:** Background images are compressed to modern WebP format (`images/bg.webp` 480 KB from 6.94 MB; `images/w-bg.webp` 634 KB from 7.55 MB — over 91–93% file size reduction).
+  - **Desktop Visual Fidelity & Transparency:** Both themes maintain their desktop background wallpaper textures and opacity (`0.9`) on `body`, `.white-vertion`, and `.dark-vertion.black-bg`. Cards retain full glassmorphic transparency (`var(--surface-glass-bg)` with `backdrop-filter: blur(14px)`), allowing the rich background texture and constellation nodes to shine through.
+  - **Decoupled Mobile Boundaries:** Mobile-specific layout and scroll optimizations are strictly scoped to `@media (max-width: 767px)` in CSS and `window.innerWidth < 768` in JS. Pointer-coarse queries were decoupled to ensure desktop touchscreen laptops running Google Chrome retain 100% full desktop fidelity.
+  - `CloudTopology3D` (`assets/js/spatial-3d.js`) uses 28 nodes on mobile (`< 768px`), caps mobile DPR at `1.25`, throttles mobile canvas rendering to ~30fps (`32ms`), skips canvas `fillText` node labels on mobile so Hero text is 100% legible, and ignores mobile vertical-only URL bar `resize` events during scroll.
+  - Scroll listeners in `spatial-3d.js` (`initScrollHUD`) and `custom-scripts.js` (`updateNavStrict`) are `{ passive: true }`, state-guarded, and `requestAnimationFrame`-throttled with cached `docHeight`.
+
+

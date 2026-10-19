@@ -86,6 +86,8 @@
 html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -99,6 +101,11 @@ body {
   position: relative;
   color: #999999;
   opacity: 0.9;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 76px;
 }
 
 h1,
@@ -765,7 +772,7 @@ h6 {
 }
 
 .white-vertion {
-  background: url('../../images/w-bg.png') no-repeat center center fixed;
+  background: url('../../images/w-bg.webp') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -781,6 +788,7 @@ h6 {
   color: #000;
 }
 
+.white-vertion h1,
 .white-vertion h2 {
   color: #000;
 }
@@ -984,7 +992,7 @@ h6 {
 }
 
 .dark-vertion.black-bg {
-  background: url('../../images/bg.png') no-repeat center center fixed;
+  background: url('../../images/bg.webp') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -1000,6 +1008,7 @@ h6 {
   color: #fff;
 }
 
+.dark-vertion h1,
 .dark-vertion h2 {
   color: #fff;
 }
@@ -1453,6 +1462,7 @@ body {
   border-bottom-left-radius: 0px;
 }
 
+.mh-home .mh-header-info h1,
 .mh-home .mh-header-info h2 {
   font-size: 60px;
   font-weight: 600;
@@ -4562,6 +4572,7 @@ body.white-vertion {
 }
 
 /* 1. Fluid Typography & Architectural Hierarchy */
+.mh-home .mh-header-info h1,
 .mh-home .mh-header-info h2,
 .mh-about .mh-about-inner h2,
 .mh-skills h3,
@@ -4572,6 +4583,7 @@ body.white-vertion {
   letter-spacing: -0.02em;
 }
 
+.mh-home .mh-header-info h1,
 .mh-home .mh-header-info h2 {
   font-size: clamp(2.35rem, 4.2vw + 0.8rem, 3.65rem);
   line-height: 1.12;
@@ -5538,3 +5550,362 @@ button:focus-visible,
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   13. MOBILE UI ARCHITECTURE & GPU SCROLL PERFORMANCE
+   ========================================================================== */
+
+/* Mobile & Tablet Navigation Bar (<= 991px) */
+@media (max-width: 991px) {
+  .mh-header,
+  .mh-header.nav-strict {
+    padding: 8px 0 !important;
+    min-height: 60px;
+  }
+
+  .mh-header .mh-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .mh-xs-mobile-nav .navbar-toggler .icon {
+    left: 50% !important;
+    top: 50% !important;
+  }
+
+  .theme-toggle-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 1002;
+  }
+
+  .white-vertion .theme-toggle-btn {
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+  }
+
+  .mh-xs-mobile-nav .navbar-collapse .navbar-nav li {
+    margin: 4px 0;
+  }
+
+  .mh-xs-mobile-nav .navbar-collapse .navbar-nav li a {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 14px !important;
+    border-radius: 10px;
+    border-bottom: none !important;
+    display: block;
+  }
+}
+
+/* Mobile Layout & Typography Polish (<= 767px) */
+@media (max-width: 767px) {
+  .mh-home .home-padding {
+    padding: 88px 0 44px 0 !important;
+  }
+
+  .hero-orb-stage,
+  .mh-home .hero-img {
+    max-width: 290px;
+    margin: 0 auto 18px auto !important;
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+
+  .mh-home .img-border {
+    width: 220px !important;
+    height: 220px !important;
+    border-width: 10px !important;
+    animation: none !important;
+    transform: none !important;
+    transform-style: flat !important;
+    z-index: 1;
+  }
+
+  .mh-home .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-width: 10px !important;
+  }
+
+  .spatial-float-badge {
+    padding: 5px 10px;
+    font-size: 10.5px;
+    border-radius: 999px;
+    gap: 5px;
+    animation: none !important;
+    transform: none !important;
+    z-index: 10 !important;
+    background: rgba(18, 16, 27, 0.96) !important;
+  }
+
+  .white-vertion .spatial-float-badge {
+    background: rgba(255, 255, 255, 0.96) !important;
+  }
+
+  .badge-top-left { top: -4px; left: -6px; }
+  .badge-top-right { top: -4px; right: -6px; }
+  .badge-bottom-left { bottom: -4px; left: -6px; }
+  .badge-bottom-right { bottom: -4px; right: -6px; }
+
+  .mh-home .mh-header-info {
+    margin-top: 10px !important;
+    text-align: center;
+  }
+
+  .mh-home .mh-header-info .mh-promo {
+    margin-bottom: 14px;
+  }
+
+  .mh-home .mh-header-info h1,
+  .mh-home .mh-header-info h2 {
+    font-size: clamp(1.95rem, 7.6vw, 2.45rem) !important;
+    line-height: 1.15 !important;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+
+  .mh-home .mh-header-info h4 {
+    font-size: clamp(1.02rem, 4.3vw, 1.22rem) !important;
+    line-height: 1.38 !important;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  .mh-home .mh-header-info ul:not(.social-icon) {
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+
+  .mh-home .mh-header-info ul:not(.social-icon) li {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+
+  /* About Section & Impact Counters */
+  .mh-about .mh-about-inner {
+    margin: 8px 0 18px 0 !important;
+    padding: 0 4px !important;
+  }
+
+  .mh-about .mh-about-inner h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .mh-about .mh-about-inner p {
+    font-size: 15.5px;
+    line-height: 1.72;
+    margin-bottom: 22px;
+  }
+
+  .mh-about .mh-about-tag ul {
+    gap: 8px;
+  }
+
+  .mh-about .mh-about-tag ul li span {
+    font-size: 12.5px;
+    padding: 6px 12px;
+  }
+
+  .impact-metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+
+  .impact-metrics-row > [class*="col-"] {
+    display: flex;
+  }
+
+  .impact-metric-card {
+    width: 100%;
+    padding: 16px 10px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .impact-counter-value {
+    font-size: 1.75rem;
+  }
+
+  .impact-counter-label {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Featured Agentic Systems */
+  .mh-agentic-systems .section-separator {
+    padding-top: 36px;
+    padding-bottom: 20px;
+  }
+
+  .agentic-section-subtitle,
+  .experience-subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 0 10px;
+    margin-bottom: 26px;
+  }
+
+  .mh-agentic-systems .section-separator > .col-lg-6,
+  .agentic-systems-grid > [class*="col-"] {
+    margin-bottom: 18px;
+  }
+
+  .agentic-system-card {
+    padding: 20px 18px;
+  }
+
+  .agentic-card-header {
+    gap: 12px;
+  }
+
+  .agentic-card-header h4 {
+    font-size: 17.5px;
+  }
+
+  .agentic-card-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .agentic-card-links {
+    gap: 8px;
+  }
+
+  .agentic-link {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 40px;
+  }
+
+  /* Technical Skills Bento Grid */
+  .mh-skills .mh-professional-skill {
+    padding: 0 12px;
+    margin-bottom: 32px;
+  }
+
+  .mh-skills .mh-professional-skill h3,
+  .mh-professional-skills h3,
+  .mh-experince h3,
+  .section-title h3,
+  .section-title h2 {
+    font-size: 26px;
+    line-height: 1.28;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .mh-skills .work-responsibility.skills-bento-grid li {
+    align-items: flex-start;
+    padding: 14px 16px;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .skill-bento-icon {
+    margin-top: 2px;
+  }
+
+  .skill-bento-body {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  /* Work Experience Master-Detail */
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .experience-preview-container {
+    padding: 20px 16px;
+    min-width: 0;
+    margin: 14px auto;
+  }
+
+  .preview-header h3 {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+
+  .preview-body ul li {
+    font-size: 14px;
+    line-height: 1.62;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  /* Certificates Filter Pills & Accordion */
+  .portfolio-nav {
+    margin-bottom: 26px;
+  }
+
+  .portfolio-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  .portfolio-nav ul li {
+    margin: 0 !important;
+    display: inline-flex;
+  }
+
+  .portfolio-nav ul li span {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom-width: 1px !important;
+  }
+
+  .portfolio-nav ul li.current span {
+    background: rgba(var(--accent-rgb), 0.15);
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary);
+  }
+
+  .white-vertion .portfolio-nav ul li span {
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
+  }
+
+  .white-vertion .portfolio-nav ul li.current span {
+    background: rgba(0, 185, 255, 0.12);
+    border-color: #00B9FF !important;
+    color: #0284c7;
+  }
+
+  .in-progress-cert-card {
+    min-height: 0;
+    padding: 20px 18px;
+  }
+
+  .earlier-certs-toggle {
+    padding: 14px 16px;
+  }
+}
+

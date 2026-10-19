@@ -14,12 +14,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Open Graph / LinkedIn -->
+    <link rel="canonical" href="https://mu7med.org/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#100e17">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mohammed Abdullah — DevOps Engineer | Agentic AI &amp; AgentOps">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://mu7med.org/">
     <meta property="og:title" content="Mohammed Abdullah | DevOps Engineer — Agentic AI &amp; AgentOps">
     <meta property="og:description"
         content="DevOps Engineer in Riyadh specializing in agentic AI, MCP servers, multi-agent orchestration, and production Kubernetes &amp; cloud infrastructure automation.">
     <meta property="og:image" content="https://mu7med.org/assets/images/profile-hero.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mohammed Abdullah | DevOps Engineer — Agentic AI &amp; AgentOps">
+    <meta name="twitter:description"
+        content="DevOps Engineer in Riyadh specializing in agentic AI, MCP servers, multi-agent orchestration, and production Kubernetes &amp; cloud infrastructure automation.">
+    <meta name="twitter:image" content="https://mu7med.org/assets/images/profile-hero.webp">
+
+    <!-- Preload LCP Hero Portrait -->
+    <link rel="preload" as="image" href="assets/images/profile-hero.webp" fetchpriority="high">
+
+    <!-- Structured Data (JSON-LD: Person, ProfilePage & WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://mu7med.org/#website",
+          "url": "https://mu7med.org/",
+          "name": "Mohammed Abdullah | DevOps Engineer — Agentic AI & AgentOps",
+          "description": "DevOps Engineer in Riyadh specializing in agentic AI, MCP servers, multi-agent orchestration, and production Kubernetes & cloud infrastructure automation.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://mu7med.org/#profilepage",
+          "url": "https://mu7med.org/",
+          "name": "Mohammed Abdullah | DevOps Engineer — Agentic AI & AgentOps",
+          "isPartOf": { "@id": "https://mu7med.org/#website" },
+          "mainEntity": { "@id": "https://mu7med.org/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://mu7med.org/#person",
+          "name": "Mohammed Abdullah",
+          "jobTitle": "DevOps Engineer | Agentic AI & AgentOps",
+          "url": "https://mu7med.org/",
+          "image": "https://mu7med.org/assets/images/profile-hero.webp",
+          "email": "mailto:mu7med@outlook.com",
+          "telephone": "+966-50-172-0250",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Riyadh",
+            "addressRegion": "Riyadh Province",
+            "addressCountry": "SA"
+          },
+          "sameAs": [
+            "https://github.com/mu7med",
+            "https://www.linkedin.com/in/mohammed--abdullah"
+          ],
+          "knowsAbout": [
+            "Agentic AI",
+            "AgentOps",
+            "Model Context Protocol (MCP)",
+            "Multi-Agent Orchestration",
+            "LLM Gateways & Cost FinOps",
+            "Agentic Search & RAG",
+            "Kubernetes (CKA / CKS)",
+            "Prometheus (PCA) & Agent Observability",
+            "Oracle Cloud Infrastructure (OCI)",
+            "AWS",
+            "Microsoft Azure",
+            "Terraform & Infrastructure as Code",
+            "ArgoCD & GitOps",
+            "DevSecOps"
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- FAV AND ICONS   -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -71,12 +147,12 @@
            NAVIGATION
         ===================
         -->
-    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav wow fadeInUp" id="mh-header">
+    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav" id="mh-header">
         <div id="scroll-progress-bar" class="scroll-progress-bar" aria-hidden="true"></div>
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-expand-lg mh-nav nav-btn">
+                <nav class="navbar navbar-expand-lg mh-nav nav-btn" aria-label="Primary Navigation">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -118,6 +194,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!--
         ===================
             HOME 
@@ -134,8 +211,7 @@
                                 <span>Hello I'm</span>
                             </div>
 
-                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Mohammed Abdullah
-                            </h2>
+                            <h1 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Mohammed Abdullah</h1>
                             <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">DevOps Engineer | Agentic AI &amp; AgentOps</h4>
 
                             <ul>
@@ -169,7 +245,7 @@
                             </div>
                             <div class="img-border">
                                 <img src="assets/images/profile-hero.webp" alt="Mohammed Abdullah - DevOps Engineer | Agentic AI & AgentOps"
-                                     class="img-fluid">
+                                     width="360" height="360" fetchpriority="high" decoding="async" class="img-fluid">
                             </div>
                             <div class="spatial-float-badge badge-bottom-left" aria-hidden="true">
                                 <i class="fa fa-shield"></i> <span>CKS &amp; CKA</span>
@@ -780,7 +856,7 @@
                             <!-- DevOps & Cloud (10) -->
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
-                                    <img src="DevOps_and_cloud/CKS.png" alt="CKS Certificate">
+                                    <img src="DevOps_and_cloud/CKS.png" alt="CKS Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">CKS</h5>
@@ -792,7 +868,7 @@
 
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
-                                    <img src="DevOps_and_cloud/CKA.png" alt="CKA Certificate">
+                                    <img src="DevOps_and_cloud/CKA.png" alt="CKA Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">CKA</h5>
@@ -804,7 +880,7 @@
 
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
-                                    <img src="DevOps_and_cloud/Prometheus.png" alt="PCA Certificate">
+                                    <img src="DevOps_and_cloud/Prometheus.png" alt="PCA Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">PCA</h5>
@@ -818,7 +894,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
                                     <img src="DevOps_and_cloud/OCI Devops Professional 2023.png"
-                                        alt="OCI DevOps Professional 2023 Certificate">
+                                        alt="OCI DevOps Professional 2023 Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">OCI Devops Professional 2023</h5>
@@ -831,7 +907,7 @@
 
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
-                                    <img src="DevOps_and_cloud/ArgoCD.png" alt="ArgoCD Certificate">
+                                    <img src="DevOps_and_cloud/ArgoCD.png" alt="ArgoCD Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">ArgoCD</h5>
@@ -844,7 +920,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
                                     <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Architect Associate.png"
-                                        alt="OCI Architect Associate Certificate">
+                                        alt="OCI Architect Associate Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Oracle Cloud Infrastructure 2021 Architect Associate</h5>
@@ -858,7 +934,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
                                     <img src="DevOps_and_cloud/AWS Certified Cloud Practitioner.png"
-                                        alt="AWS Certified Cloud Practitioner Certificate">
+                                        alt="AWS Certified Cloud Practitioner Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">AWS Certified Cloud Practitioner</h5>
@@ -872,7 +948,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
                                     <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Certified Architect Professional.png"
-                                        alt="OCI Certified Architect Professional Certificate">
+                                        alt="OCI Certified Architect Professional Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Oracle Cloud Infrastructure 2021 Certified Architect
@@ -887,7 +963,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
                                     <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Cloud Operations Associate.png"
-                                        alt="OCI Cloud Operations Associate Certificate">
+                                        alt="OCI Cloud Operations Associate Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Oracle Cloud Infrastructure 2021 Cloud Operations Associate
@@ -901,7 +977,7 @@
 
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 user-interface">
                                 <figure>
-                                    <img src="DevOps_and_cloud/Microsoft Azure.png" alt="Microsoft Azure Certificate">
+                                    <img src="DevOps_and_cloud/Microsoft Azure.png" alt="Microsoft Azure Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Microsoft Azure</h5>
@@ -915,7 +991,7 @@
                             <!-- System (Modern) -->
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 branding">
                                 <figure>
-                                    <img src="System/AXELOS.png" alt="AXELOS Certificate">
+                                    <img src="System/AXELOS.png" alt="AXELOS Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">AXELOS</h5>
@@ -929,7 +1005,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                 <figure>
                                     <img src="Network_Certificates/Cisco Certified Network Professional Enterprise certificate.png"
-                                        alt="CCNP Enterprise Certificate">
+                                        alt="CCNP Enterprise Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Cisco Certified Network Professional Enterprise certificate
@@ -944,7 +1020,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                 <figure>
                                     <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation certificate.png"
-                                        alt="Cisco Enterprise Advanced Infrastructure Certificate">
+                                        alt="Cisco Enterprise Advanced Infrastructure Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Cisco Certified Specialist - Enterprise Advanced
@@ -959,7 +1035,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                 <figure>
                                     <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Core certificate.png"
-                                        alt="Cisco Enterprise Core Certificate">
+                                        alt="Cisco Enterprise Core Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Cisco Certified Specialist - Enterprise Core certificate</h5>
@@ -972,7 +1048,7 @@
 
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                 <figure>
-                                    <img src="Network_Certificates/Junos certificate.png" alt="Junos Certificate">
+                                    <img src="Network_Certificates/Junos certificate.png" alt="Junos Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Junos certificate</h5>
@@ -986,7 +1062,7 @@
                             <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                 <figure>
                                     <img src="Network_Certificates/Palo Alto ACE certificate.png"
-                                        alt="Palo Alto ACE Certificate">
+                                        alt="Palo Alto ACE Certificate" decoding="async">
                                     <figcaption class="fig-caption">
                                         <i class="fa fa-search"></i>
                                         <h5 class="title">Palo Alto ACE certificate</h5>
@@ -1031,7 +1107,7 @@
                                 <div class="row mh-project-gallery pt-4">
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 branding">
                                         <figure>
-                                            <img src="System/MCP.png" alt="MCP Certificate">
+                                            <img src="System/MCP.png" alt="MCP Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">MCP</h5>
@@ -1043,7 +1119,7 @@
 
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 branding">
                                         <figure>
-                                            <img src="System/MCSA_2012.png" alt="MCSA 2012 Certificate">
+                                            <img src="System/MCSA_2012.png" alt="MCSA 2012 Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">MCSA_2012</h5>
@@ -1055,7 +1131,7 @@
 
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 branding">
                                         <figure>
-                                            <img src="System/MCITP_2008.png" alt="MCITP 2008 Certificate">
+                                            <img src="System/MCITP_2008.png" alt="MCITP 2008 Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">MCITP_2008</h5>
@@ -1068,7 +1144,7 @@
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 branding">
                                         <figure>
                                             <img src="System/VMware Certified Professional (VCP) 6 - Data Center Virtualization certificate.png"
-                                                alt="VMware VCP6 Certificate">
+                                                alt="VMware VCP6 Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">VMware Certified Professional (VCP) 6 - Data Center
@@ -1083,7 +1159,7 @@
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                         <figure>
                                             <img src="Network_Certificates/Cisco Certified Network Associate Routing and Switching certificate.png"
-                                                alt="CCNA R&S Certificate">
+                                                alt="CCNA R&S Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">Cisco Certified Network Associate Routing and Switching
@@ -1098,7 +1174,7 @@
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                         <figure>
                                             <img src="Network_Certificates/Cisco Certified Network Associate Security certificate.png"
-                                                alt="CCNA Security Certificate">
+                                                alt="CCNA Security Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">Cisco Certified Network Associate Security certificate</h5>
@@ -1112,7 +1188,7 @@
                                     <div class="grid-item col-md-4 col-sm-6 col-xs-12 ui mockup">
                                         <figure>
                                             <img src="Network_Certificates/Cisco Certified Network Professional Routing and Switching certificate.png"
-                                                alt="CCNP R&S Certificate">
+                                                alt="CCNP R&S Certificate" loading="lazy" decoding="async">
                                             <figcaption class="fig-caption">
                                                 <i class="fa fa-search"></i>
                                                 <h5 class="title">Cisco Certified Network Professional Routing and Switching
@@ -1139,7 +1215,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/ArgoCD.png" alt="ArgoCD Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/ArgoCD.png" alt="ArgoCD Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1154,7 +1230,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/CKA.png" alt="CKA Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/CKA.png" alt="CKA Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1169,7 +1245,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/AWS Certified Cloud Practitioner.png" alt="AWS Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/AWS Certified Cloud Practitioner.png" alt="AWS Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1184,7 +1260,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/CKS.png" alt="CKS Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/CKS.png" alt="CKS Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1199,7 +1275,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/Microsoft Azure.png" alt="Microsoft Azure Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/Microsoft Azure.png" alt="Microsoft Azure Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1214,7 +1290,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/OCI Devops Professional 2023.png" alt="OCI DevOps Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/OCI Devops Professional 2023.png" alt="OCI DevOps Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1230,7 +1306,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Architect Associate.png" alt="OCI Architect Associate Certificate"
-                            class="img-fluid">
+                            loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1246,7 +1322,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Certified Architect Professional.png"
-                            alt="OCI Architect Professional Certificate" class="img-fluid">
+                            alt="OCI Architect Professional Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1262,7 +1338,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="DevOps_and_cloud/Oracle Cloud Infrastructure 2021 Cloud Operations Associate.png"
-                            alt="OCI Cloud Operations Certificate" class="img-fluid">
+                            alt="OCI Cloud Operations Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1277,7 +1353,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="DevOps_and_cloud/Prometheus.png" alt="Prometheus Certificate" class="img-fluid">
+                        <img src="DevOps_and_cloud/Prometheus.png" alt="Prometheus Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1292,7 +1368,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/AXELOS.png" alt="AXELOS Certificate" class="img-fluid">
+                        <img src="System/AXELOS.png" alt="AXELOS Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1308,7 +1384,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="System/VMware Certified Professional (VCP) 6 - Data Center Virtualization certificate.png"
-                            alt="VMware VCP 6 Certificate" class="img-fluid">
+                            alt="VMware VCP 6 Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1323,7 +1399,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCP.png" alt="MCP Certificate" class="img-fluid">
+                        <img src="System/MCP.png" alt="MCP Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1338,7 +1414,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCITP_2008.png" alt="MCITP 2008 Certificate" class="img-fluid">
+                        <img src="System/MCITP_2008.png" alt="MCITP 2008 Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1353,7 +1429,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="System/MCSA_2012.png" alt="MCSA 2012 Certificate" class="img-fluid">
+                        <img src="System/MCSA_2012.png" alt="MCSA 2012 Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1369,7 +1445,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Associate Routing and Switching certificate.png"
-                            alt="CCNA R&S Certificate" class="img-fluid">
+                            alt="CCNA R&S Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1385,7 +1461,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Associate Security certificate.png"
-                            alt="CCNA Security Certificate" class="img-fluid">
+                            alt="CCNA Security Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1401,7 +1477,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Professional Enterprise certificate.png"
-                            alt="CCNP Enterprise Certificate" class="img-fluid">
+                            alt="CCNP Enterprise Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1417,7 +1493,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Network Professional Routing and Switching certificate.png"
-                            alt="CCNP R&S Certificate" class="img-fluid">
+                            alt="CCNP R&S Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1433,7 +1509,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation certificate.png"
-                            alt="Cisco Enterprise Advanced Infrastructure Certificate" class="img-fluid">
+                            alt="Cisco Enterprise Advanced Infrastructure Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1449,7 +1525,7 @@
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
                         <img src="Network_Certificates/Cisco Certified Specialist - Enterprise Core certificate.png"
-                            alt="Cisco Enterprise Core Certificate" class="img-fluid">
+                            alt="Cisco Enterprise Core Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1464,7 +1540,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="Network_Certificates/Junos certificate.png" alt="Junos Certificate" class="img-fluid">
+                        <img src="Network_Certificates/Junos certificate.png" alt="Junos Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1479,12 +1555,13 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="mh-portfolio-modal-img">
-                        <img src="Network_Certificates/Palo Alto ACE certificate.png" alt="Palo Alto ACE Certificate" class="img-fluid">
+                        <img src="Network_Certificates/Palo Alto ACE certificate.png" alt="Palo Alto ACE Certificate" loading="lazy" decoding="async" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!--
         ===================
@@ -1492,11 +1569,12 @@
         ===================
         -->
 
-    <!-- Start of OpenWidget (www.openwidget.com) code -->
+    <!-- Start of OpenWidget (www.openwidget.com) code (Deferred to browser idle for fast mobile LCP/INP) -->
     <script>
         window.__ow = window.__ow || {};
         window.__ow.organizationId = "33fe7295-2937-4ca7-b200-4f5701bd5ab6";
-        ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[OpenWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.openwidget.com/openwidget.js", t.head.appendChild(n) } }; !n.__ow.asyncInit && e.init(), n.OpenWidget = n.OpenWidget || e }(window, document, [].slice))
+        window.__ow.asyncInit = true;
+        ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[OpenWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.openwidget.com/openwidget.js", t.head.appendChild(n) } }; n.OpenWidget = n.OpenWidget || e; var bootWidget = function () { if (window.requestIdleCallback) { window.requestIdleCallback(function () { e.init(); }, { timeout: 3000 }); } else { setTimeout(function () { e.init(); }, 1800); } }; if (t.readyState === "complete") { bootWidget(); } else { n.addEventListener("load", bootWidget, { once: true }); } }(window, document, [].slice))
     </script>
     <!-- End of OpenWidget code -->
 

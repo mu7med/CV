@@ -16,7 +16,10 @@
             this.ctx = canvas.getContext('2d');
             this.isVisible = true;
             this.isRunning = false;
-            this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+            this.isMobile = window.innerWidth < 768;
+            this.dpr = Math.min(window.devicePixelRatio || 1, this.isMobile ? 1.25 : 2);
+            this.lastWidth = 0;
+            this.lastFrameTime = 0;
 
             this.nodes = [];
             this.pulses = [];
@@ -36,7 +39,7 @@
             this.theme = document.body.classList.contains('white-vertion') ? 'light' : 'dark';
             this.palette = this.getPalette(this.theme);
 
-            this.resize();
+            this.resize(true);
             this.initNodes();
             this.bindEvents();
             this.start();
@@ -65,10 +68,22 @@
             };
         }
 
-        resize() {
+        resize(force) {
             const parent = this.canvas.parentElement;
-            this.width = parent ? parent.clientWidth : window.innerWidth;
-            this.height = parent ? parent.clientHeight : window.innerHeight;
+            const newWidth = parent ? parent.clientWidth : window.innerWidth;
+            const newHeight = parent ? parent.clientHeight : window.innerHeight;
+
+            // Ignore mobile URL bar vertical resize during scroll to prevent canvas buffer reallocation jank
+            if (!force && this.isMobile && this.lastWidth > 0 && Math.abs(newWidth - this.lastWidth) < 2) {
+                return;
+            }
+
+            const wasMobile = this.isMobile;
+            this.isMobile = newWidth < 768;
+            this.dpr = Math.min(window.devicePixelRatio || 1, this.isMobile ? 1.25 : 2);
+            this.lastWidth = newWidth;
+            this.width = newWidth;
+            this.height = newHeight;
             this.canvas.width = this.width * this.dpr;
             this.canvas.height = this.height * this.dpr;
             this.canvas.style.width = this.width + 'px';
@@ -76,10 +91,14 @@
             this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
             this.radius = Math.min(this.width, this.height) * 0.42;
             this.focalLength = Math.max(this.width, this.height) * 0.75;
+
+            if (wasMobile !== this.isMobile && this.nodes.length > 0) {
+                this.initNodes();
+            }
         }
 
         initNodes() {
-            const count = window.innerWidth < 768 ? 38 : 68;
+            const count = this.isMobile ? 28 : 68;
             this.nodes = [];
             this.pulses = [];
 
@@ -104,23 +123,18 @@
 
         bindEvents() {
             window.addEventListener('resize', () => {
-                this.resize();
+                this.resize(false);
                 if (prefersReducedMotion.matches) this.renderFrame(0);
             }, { passive: true });
 
-            window.addEventListener('mousemove', (e) => {
-                const nx = (e.clientX / window.innerWidth) - 0.5;
-                const ny = (e.clientY / window.innerHeight) - 0.5;
-                this.pointerX = nx * 0.55;
-                this.pointerY = ny * 0.35;
-            }, { passive: true });
-
-            window.addEventListener('deviceorientation', (e) => {
-                if (e.gamma !== null && e.beta !== null) {
-                    this.pointerX = Math.max(-0.5, Math.min(0.5, e.gamma / 60)) * 0.5;
-                    this.pointerY = Math.max(-0.5, Math.min(0.5, (e.beta - 45) / 60)) * 0.35;
-                }
-            }, { passive: true });
+            if (!this.isMobile) {
+                window.addEventListener('mousemove', (e) => {
+                    const nx = (e.clientX / window.innerWidth) - 0.5;
+                    const ny = (e.clientY / window.innerHeight) - 0.5;
+                    this.pointerX = nx * 0.55;
+                    this.pointerY = ny * 0.35;
+                }, { passive: true });
+            }
 
             window.addEventListener('themeChanged', (e) => {
                 this.theme = (e.detail && e.detail.theme) ? e.detail.theme :
@@ -174,7 +188,7 @@
         }
 
         spawnPulse(projected) {
-            if (this.pulses.length > 8 || Math.random() > 0.06) return;
+            if (this.pulses.length > (this.isMobile ? 4 : 8) || Math.random() > 0.06) return;
             const aIdx = Math.floor(Math.random() * projected.length);
             const a = projected[aIdx];
             // Find a close neighbor
@@ -215,7 +229,7 @@
             });
 
             // Connect nearby 3D nodes
-            const maxLinkDist = window.innerWidth < 768 ? 115 : 148;
+            const maxLinkDist = this.isMobile ? 105 : 148;
             ctx.lineWidth = 0.85;
             for (let i = 0; i < projected.length; i++) {
                 const p1 = projected[i];
@@ -262,7 +276,9 @@
             // Sort back-to-front for authentic depth occlusion
             const sorted = projected.slice().sort((a, b) => b.z - a.z);
 
-            ctx.font = '500 10px "JetBrains Mono", monospace';
+            if (!this.isMobile) {
+                ctx.font = '500 10px "JetBrains Mono", monospace';
+            }
             for (let i = 0; i < sorted.length; i++) {
                 const p = sorted[i];
                 const pulseScale = 1 + Math.sin(time * 0.002 + p.node.phase) * 0.15;
@@ -271,7 +287,7 @@
                 // Node outer halo for primary labeled nodes
                 if (p.node.label) {
                     ctx.beginPath();
-                    ctx.arc(p.screenX, p.screenY, r * 2.6, 0, Math.PI * 2);
+                    ctx.arc(p.screenX, p.screenY, r * 2.4, 0, Math.PI * 2);
                     ctx.fillStyle = this.palette.nodeGlow;
                     ctx.fill();
                 }
@@ -282,8 +298,8 @@
                 ctx.fillStyle = p.node.label ? this.palette.nodePrimary : this.palette.nodeSecondary;
                 ctx.fill();
 
-                // Technical HUD label on foreground nodes
-                if (p.node.label && p.scale > 0.78) {
+                // Technical HUD label on foreground nodes (desktop only to keep mobile Hero typography clean & fast)
+                if (!this.isMobile && p.node.label && p.scale > 0.78) {
                     ctx.fillStyle = this.palette.label;
                     ctx.fillText(p.node.label, p.screenX + r + 5, p.screenY + 3);
                 }
@@ -301,7 +317,12 @@
                     this.isRunning = false;
                     return;
                 }
-                this.rotationY += 0.0022;
+                if (this.isMobile && timestamp - this.lastFrameTime < 32) {
+                    requestAnimationFrame(loop);
+                    return;
+                }
+                this.lastFrameTime = timestamp;
+                this.rotationY += this.isMobile ? 0.003 : 0.0022;
                 this.renderFrame(timestamp);
                 requestAnimationFrame(loop);
             };
@@ -384,14 +405,41 @@
     function initScrollHUD() {
         const progressBar = document.getElementById('scroll-progress-bar');
         if (progressBar) {
-            const updateScroll = () => {
+            let docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            let ticking = false;
+
+            const recalcDocHeight = () => {
+                docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            };
+
+            const renderScrollProgress = () => {
                 const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const ratio = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
                 progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
+                ticking = false;
             };
-            window.addEventListener('scroll', updateScroll, { passive: true });
-            updateScroll();
+
+            const onScroll = () => {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(renderScrollProgress);
+                }
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', recalcDocHeight, { passive: true });
+            window.addEventListener('load', () => {
+                recalcDocHeight();
+                renderScrollProgress();
+            }, { passive: true });
+
+            const certToggle = document.getElementById('earlier-certs-toggle');
+            if (certToggle) {
+                certToggle.addEventListener('click', () => setTimeout(recalcDocHeight, 60));
+            }
+
+            recalcDocHeight();
+            renderScrollProgress();
         }
 
         // Animated Executive Counters
