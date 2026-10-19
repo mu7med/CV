@@ -46,12 +46,18 @@
       active      = false;
   
 
-      $('.navbar-toggler, .navbar-nav li a, .overlay').on('click', function () {
-          $('.navbar-toggler').toggleClass('active')
-        //   $('#js-navbar-menu').toggleClass('active');
-        //   $('.navbar-collapse').toggleClass('show');
+      $('.navbar-toggler, .overlay').on('click', function () {
+          $('.navbar-toggler').toggleClass('active');
           overlay.toggleClass('active');
           navc.toggleClass('active');
+      });
+
+      $('.navbar-nav li a').on('click', function () {
+          if (navc.hasClass('active')) {
+              $('.navbar-toggler').removeClass('active');
+              overlay.removeClass('active');
+              navc.removeClass('active');
+          }
       });  
       
         
@@ -101,14 +107,19 @@
     | NAV FIXED ON SCROLL
     | ==========================
     */
-    $(window).on('scroll', function() {
-        var scroll = $(window).scrollTop();
-        if (scroll >= 50) {
-            $(".nav-scroll").addClass("nav-strict");
-        } else {
-            $(".nav-scroll").removeClass("nav-strict");
+    var navScrollEls = document.querySelectorAll('.nav-scroll');
+    var wasNavStrict = null;
+    var updateNavStrict = function() {
+        var isStrict = (window.scrollY || document.documentElement.scrollTop) >= 50;
+        if (isStrict !== wasNavStrict) {
+            wasNavStrict = isStrict;
+            for (var i = 0; i < navScrollEls.length; i++) {
+                navScrollEls[i].classList.toggle('nav-strict', isStrict);
+            }
         }
-    });
+    };
+    window.addEventListener('scroll', updateNavStrict, { passive: true });
+    updateNavStrict();
     
 
     /*

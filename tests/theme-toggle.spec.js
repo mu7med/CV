@@ -43,6 +43,15 @@ test.describe('Theme Toggle', () => {
 
         const icon = toggleBtn.locator('i');
         await expect(icon).toHaveClass(/fa-moon-o/);
+
+        // Verify light mode background image is w-bg.webp / w-bg.png
+        const bodyBg = await page.locator('body').evaluate(el => window.getComputedStyle(el).backgroundImage);
+        expect(bodyBg).toMatch(/w-bg\.(webp|png)/);
+
+        const artifactDir = 'E:/Users/Mu7med/.gemini/antigravity/brain/69ee0081-2160-420a-91b7-e72cbd569207';
+        await page.screenshot({ path: `${artifactDir}/verify-desktop-light-hero.png` });
+        await page.locator('#mh-agentic-systems').scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `${artifactDir}/verify-desktop-light-agentic.png` });
     });
 
     test('should persist preference', async ({ page }) => {
@@ -175,12 +184,61 @@ test.describe('Theme Toggle', () => {
         await page.locator('#mh-home').scrollIntoViewIfNeeded();
         await page.screenshot({ path: `${artifactDir}/verify-desktop-hero.png` });
 
-        // Capture Mobile viewport screenshots (390x844)
+        // Verify SEO & Semantic HTML landmarks
+        await expect(page.locator('h1')).toHaveCount(1);
+        await expect(page.locator('h1')).toHaveText('Mohammed Abdullah');
+        await expect(page.locator('main#main-content')).toHaveCount(1);
+        await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://mu7med.org/');
+        await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /index,\s*follow/);
+
+        const jsonLdText = await page.locator('script[type="application/ld+json"]').textContent();
+        const jsonLd = JSON.parse(jsonLdText);
+        expect(jsonLd['@graph']).toBeDefined();
+        expect(jsonLd['@graph'].some(item => item['@type'] === 'Person' && item.name === 'Mohammed Abdullah')).toBe(true);
+
+        // Verify background texture and glassmorphic card transparency are preserved
+        const bodyBg = await page.locator('body').evaluate(el => window.getComputedStyle(el).backgroundImage);
+        expect(bodyBg).toMatch(/bg\.(webp|png)/);
+
+        const cardBackdrop = await page.locator('.agentic-system-card').first().evaluate(el => {
+            const cs = window.getComputedStyle(el);
+            return cs.backdropFilter || cs.webkitBackdropFilter || 'none';
+        });
+        expect(cardBackdrop).toContain('blur');
+
+        // Capture & Verify Mobile viewport UI & Scroll Performance (390x844)
         await page.setViewportSize({ width: 390, height: 844 });
-        await page.locator('#mh-home').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(200);
+
+        // Zero horizontal scroll overflow on mobile
+        const hasHorizontalOverflow = await page.evaluate(() => {
+            return document.documentElement.scrollWidth > document.documentElement.clientWidth;
+        });
+        expect(hasHorizontalOverflow).toBe(false);
+
+        // Mobile Nav Drawer should be offscreen initially and styled in Dark Obsidian (never #0bceaf / rgb(11, 206, 175))
+        const navCollapse = page.locator('#navbarSupportedContent');
+        await expect(navCollapse).not.toHaveClass(/active/);
+        const drawerBg = await navCollapse.evaluate(el => window.getComputedStyle(el).backgroundColor);
+        expect(drawerBg).toBe('rgb(18, 16, 27)');
+
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(150);
         await page.screenshot({ path: `${artifactDir}/verify-mobile-hero.png` });
+
         await page.locator('#mh-agentic-systems').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(150);
         await page.screenshot({ path: `${artifactDir}/verify-mobile-agentic-systems.png` });
+
+        await page.locator('#mh-portfolio').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(150);
+        await page.screenshot({ path: `${artifactDir}/verify-mobile-skills-certs.png` });
+
+        // Test opening and closing the mobile drawer
+        await page.locator('.navbar-toggler').click();
+        await expect(navCollapse).toHaveClass(/active/);
+        await page.locator('#navbarSupportedContent .nav-link[href="#mh-about"]').click();
+        await expect(navCollapse).not.toHaveClass(/active/);
 
         expect(consoleErrors).toEqual([]);
     });
